@@ -1,0 +1,73 @@
+Useful Info MS Project:cs
+Idled  fun 
+IDL 
+	How to run the code when shuffled into home director (check out idl tutorial, compling in idl code, or running an idl code)
+	 
+To log onto sptcloud:
+Open a Cygwin terminal
+Use startxwin command to open independent terminal
+export DISPLAY=:0.0 (most likely will not use)
+deroak7_Xbilem
+passwd  changing password
+ssh  –Y –i /cygdrive/c/Users/Gabrielle/.ssh/_git_key gcole@128.135.158.235
+To Open text editor:
+Emacs <filename> & (make sure to include the & to keep the command line open
+To Run code in idl:
+.rn <filename>
+To access key:
+cd cygdrive/c/Users/Gabrielle/.ssh
+in this directory should be _git_key and git_key.pub
+Useful notes about Existing code
+assessing it
+emacs .bashrc
+cvs co spt_analysis 
+
+Useful tips about whatever
+Less <filename>  to display file information
+~/   to copy something to my home directory
+scp  send copy to “file name from” and “file name to”
+ctrl x ctrl c   exit emacs
+ctrl x ctrl s   save in emacs
+pwd  present working directory, tell you where you currently are 
+when working in terminal use /cygdrive/c/Users/Gabrielle to get to files on computer
+cd  (..)  (change directory) (or go back to home directory)
+ls  (list directory contents)
+ls –a   (list all directory contents)
+chmod <filename>  changes permissions on a file
+Running To-Do list
+Understand the imputs and what is going on there as well as the outputs and how they are being manipulated
+Try out running the code in idl. 
+
+
+Python Commands
+ipy  to open ipython from terminal
+Len() = length of an array or string
+.append() = add something to end of an array
+<= less than or equal to….etc, etc.
+elif = ‘else if’
+.insert(place #, what you want to incert)
+range(starting number, ending number+1, step size of increments)
+for i in range(len(a)):   a is some list or array
+for w in words:  w is like an index over the list or array “words”
+break  denotes a break in a for loop
+continue  for continuing in interiation within a for loop
+def “function name” allow you to define a function
+man <command>  brngs up more infor
+
+
+IDL Commands:
+Capitalization & spaces don’t matter in idl
+Print, a  prints the value of a
+Help, a  prints value of a and tells if it is a float or interger, etc.
+&  can be used to link to operations to each other
+A = [1,2,4.54,3]  creates an array with the given values.
+Print, max(a)  prints the max of the array a
+Print, total(a)  prints the total of the array a
+A = fltarr(100)  creates array of 100 floating numbers = to 0 
+A = findgen(100)  creates array of 100 numbers from 0 to 99
+A[i;j]  allows you to index an array
+A = fltarr(i, j)  creates array with i x j elements
+!<system variable>  denotes some read only global variables
+3.4d-4  3.4 x 10^-4
+3d  3.000000 (instead of  just 3)
+Randomu(seed, 230)  creates 230 random array of numbers bwt 0 and 1
