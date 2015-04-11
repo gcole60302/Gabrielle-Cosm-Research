@@ -1,0 +1,301 @@
+;----------------------------------------------------------------------------- 
+; NAME:
+;       CONSTRUCT_SIM_MAP.PRO
+; 
+; PURPOSE: 
+;       Generate simulated maps using the map-domain pipeline. Various
+;       inputs are available to customize the contents of
+;       the output maps. All inputs and outputs should be in K.
+;       
+; CALLING SEQUENCE: 
+;         maps=constructSimMap($
+;                  simdir=simdir, $
+;                  freqs=freqs, $
+;                  transFunc=transFunc, $
+;                  beamFWHM=beamFWHM, $
+;                  beam_profile=beam_profile, $
+;                  beam_2d_profile=beam_2d_profile, $
+;                  hipass=hipass, $
+;                  lopass=lopass, $
+;                  cmb=cmb, $
+;                  sz=sz, $
+;                  ps=ps, $
+;                  truncps=truncps, $
+;                  extramaps=extramaps, $
+;                  noiseMaps=noiseMaps, $
+;                  noiseID=noiseID, $
+;                  noisePSDs=noisePSDs, $
+;                  whiteNoise=whiteNoise, $
+;                  noiseEnvelope=noiseEnvelope, $
+;                  stopit=stopit)
+;
+;
+;
+; INPUT:
+;
+; OUTPUT: 
+;       MAPS - the simulated maps, including all requested
+;              components. This will be a [Nx,Ny,nfreq] array.
+;
+; KEYWORDS: 
+;       SIMDIR - The location of pre-generated simulated
+;                maps. Defaults to /data/sptdat/simulationinputs
+;
+;       FREQS - Frequencies to simulate, in GHz. These should be some
+;               subset of [90,150,220], given as an array nfreq log.
+;
+;       TRANSFUNC - Transfer function to apply to signal
+;                   maps. Defaults to a gaussian beam of width
+;                   BEAMFWHM, plus a highpass filter at HIPASS and a
+;                   lowpass filter at LOPASS.
+;
+;       BEAMFWHM - Array of beam sizes, in arcmin, given as array
+;                  nfreq long. Defaults to 1.15.
+;
+;       BEAM_PROFILE - a [npix,nfreqs] array of 1-d B(ell) profiles
+;
+;       BEAM_2D_PROFILE - a [npix,npix,nfreqs] array of 2-d B(ell) profiles
+;
+;       HIPASS - Frequency of a kx highpass filter, given a
+;                scanspeed. Defaults to no filter.
+;
+;       LOPASS - Frequency of kx lowpass filter, given a
+;                scanspeed. Defaults to no filter.
+;
+;       CMB - Whether to include CMB in the maps. Various forms are
+;             available:
+;              If a number, it is treated as the index of the
+;              pregenerated map to use
+;              If a string array, it is assumes to be a list
+;              of fits files to be loaded and used as CMB maps.
+;
+;       SZ - Whether to include SZ in the maps. Follows the same form
+;            conventions as the CMB keyword, though the filename
+;            should refer to a 150GHz SZ map - other bands are
+;            generated from it.
+;
+;       PS - Whether to include point sources in the maps. Follows the
+;            same form conventions as the CMB keyword. If giving a
+;            filename, it should be a [nfreq] array of filenames.
+;
+;       TRUNCPS - Maximum positive pixel value (in K) to truncate the
+;                 PS maps at. Any pixels above TRUNCPS are set to
+;                 TRUNCPS. A reasonable value is 1mK (truncps=0.001)
+;
+;       EXTRAMAPS - [Nx,Ny,nfreq] array of additional sky signal to
+;                   include in the maps.
+;
+;       NOISEMAPS - [Nx,Ny,nfreq] array of noise to be included in the
+;                   maps. Noise does not get hit by the transfer function.
+;
+;       NOISEID - Index of pregenerated noise phase maps to use. This
+;                 should be set alongside whitenoise or noisepsd.
+;
+;       WHITENOISE - [nfreq] array of white noise levels (in K) to be
+;                    included in the maps. Requires NoiseID to be set.
+;
+;       NOISEPSDS - [Nx,Ny,nfreq] array of psds to be used in
+;                  maps. Alternately, can be [Nx,nfreq] to use Kx-only
+;                  noise shape. Requires NoiseID to be set.
+;
+;       NOISEENVELOPE - a [Nx,Ny] real-space map of modulations that
+;                       should be applied to the noise map before
+;                       adding it to the simulated map. Use this to
+;                       add eg. dec-dependence, or a low-noise stripe
+;                       as in a lead-trail field.
+;
+;
+;
+; HISTORY: 
+;       Created 05Jul09, KV
+;       Added custom beam profile inputs 03Aug09, KV
+;       Bug fixes, particularly in noise map indexing 31Sep09, KV
+;
+; TO DO: 
+;       * Debug, test more thoroughly
+;       * Bulletproof: test input sizes before blindly adding them
+;       * Allow sizes other than 3120x3120, test for size as needed
+;
+;-----------------------------------------------------------------------------;
+
+
+FUNCTION construct_sim_map,$
+                  simdir=simdir, $
+                  freqs=freqs, $
+                  transFunc=transFunc, $
+                  beamFWHM=beamFWHM, $
+                  beam_profile=beam_profile, $
+                  beam_2d_profile=beam_2d_profile, $
+                  hipass=hipass, $
+                  lopass=lopass, $
+                  cmb=cmb, $
+                  sz=sz, $
+                  ps=ps, $
+                  truncps=truncps, $
+                  extramaps=extramaps, $
+                  noiseMaps=noiseMaps, $
+                  noiseID=noiseID, $
+                  noisePSDs=noisePSDs, $
+                  whiteNoise=whiteNoise, $
+                  noiseEnvelope=noiseEnvelope, $
+                  stopit=stopit
+
+
+
+if ~keyword_set(simdir) then simdir='/data/sptdat/simulationinputs/'
+if ~keyword_set(freqs) then freqs=150
+
+nfreqs=n_elements(freqs);
+nx=3120
+ny=nx
+pixsize=0.25   ; arcmin
+scanspeed=0.25 ; deg/s
+
+skymaps=fltarr(nx,ny,nfreqs)
+if keyword_set(extramaps) then begin
+ skymaps+=extramaps
+endif
+
+
+for f=0,nfreqs-1 do begin
+
+ if keyword_set(cmb) then begin
+  if (n_elements(cmb) eq 1) then begin
+   if (size(cmb,/type) eq 7) then $; Check if it's a String 
+    skymaps[*,*,f]+=readfits(cmb,/silent) $
+   else $
+    skymaps[*,*,f]+=readfits(simDir+string(format='("cmb/cmb_",I0,".fits")',cmb),/silent)
+  endif else begin
+   s=size(cmb)
+   if ((s[1] ne nx) or (s[2] ne ny)) then begin
+    print,"Error - wrong size input CMB map"
+    return,-1
+   endif
+   skymaps[*,*,f]+=cmb
+  endelse
+ endif
+
+ if keyword_set(sz) then begin
+  if (n_elements(sz) eq 1) then begin $
+   if (size(sz,/type) eq 7) then $
+    skymaps[*,*,f]+=readfits(sz,/silent) * fxsz(freqs(f))/fxsz(150) $
+   else $
+    skymaps[*,*,f]+=readfits(simDir+string(format='("SZ/sz_",I0,"_150GHz.fits")',sz),/silent) * $
+                    fxsz(freqs(f))/fxsz(150)
+  endif else begin
+   s=size(sz)
+   if ((s[1] ne nx) or (s[2] ne ny)) then $
+    if ((nfreqs gt 1) and (s[3] ne nfreqs)) then begin
+     print,"Error - wrong size input SZ map"
+     return,-1
+    endif
+   skymaps[*,*,f]+=sz[*,*,f]
+  endelse
+ endif
+
+
+ if keyword_set(ps) then begin
+  if (n_elements(ps) eq 1) then begin
+   psm=readfits(simDir+string(format='("ptsrc/ptsrc_",I0,"_",I0,"GHz.fits")',$
+                                         ps,freqs(f)),/silent)
+  endif else if (size(ps,/type) eq 1) then begin
+    psm=readfits(ps,/silent)
+  endif else begin
+   s=size(ps)
+   if ((s[1] ne nx) or (s[2] ne ny)) then $
+    if ((nfreqs gt 1) and (s[3] ne nfreqs)) then begin
+     print,"Error - wrong size input PS map"
+     return,-1
+    endif
+   psm=ps[*,*,f]
+  endelse
+  if (keyword_set(truncps)) then begin
+   q=where(psm gt truncps)
+   if (q[0] ne -1) then psm[q] = truncps
+  endif
+  skymaps[*,*,f]+=psm
+ endif
+
+
+ if ~keyword_set(transFunc) then begin
+  ellg=make_fft_grid(pixsize/60.*!dtor,nx,ny)*2*!pi
+  feff=ellg[*,0]*scanspeed*!dtor/2./!pi
+  whn=where(feff ne 0)
+
+  if ((keyword_set(beam_2d_profile) + $
+       keyword_set(beam_profile) + $
+       keyword_set(beamFWHM)) gt 1) then begin
+   print,"Error - set at most one of beam_2d_profile, beam_profile, and beamFWHM"
+   return,-1
+  endif
+
+  if keyword_set(beam_2d_profile) then begin
+   b=beam_2d_profile[*,*,f]
+  endif else if keyword_set(beam_profile) then begin
+   b=(beam_profile[*,f])[ellg]
+  endif else begin
+   if ~keyword_set(beamFWHM) then beamFWHM=1.15
+   b=(beamfilt(findgen(max(ellg)+1),beamFWHM[f]))[ellg]
+  endelse
+
+  hp1d=fltarr(nx)
+  hp2d=fltarr(nx,ny)
+  if keyword_set(hipass) then begin
+   hp1d[whn]=exp(-1.*(hipass[0]/feff[whn])^6)
+   for i=0,ny-1 do hp2d[*,i]=hp1d
+  endif else hp2d+=1
+
+  lp1d=fltarr(nx)
+  lp2d=fltarr(nx,ny)
+  if keyword_set(lopass) then begin
+   lp1d=exp(-1.*(feff/lopass[0])^6)
+   for i=0,ny-1 do lp2d[*,i]=lp1d
+  endif else lp2d+=1
+
+  transFunc=b*hp2d*lp2d
+ endif
+ skymaps[*,*,f]=real_part(fft(fft(skymaps[*,*,f])*transFunc,1))
+
+
+
+ if (keyword_set(noiseMaps)+keyword_set(noiseID)) gt 1 then begin
+  print,"Error - set only one source of noise (map or id number)."
+  return,-1
+ endif
+
+ noiseMap=0
+ if keyword_set(noiseMaps) then begin
+  noiseMap=noiseMaps[*,*,f]
+ endif else if keyword_set(noiseID) then begin
+  if (keyword_set(whiteNoise) + keyword_set(noisePSDs)) gt 1 then begin
+   print,"Error - set only noisePSDs or whitenoise, not both"
+   return,-1
+  endif else if keyword_set(whiteNoise) then begin
+   noiseMap=readfits(simDir+string(format='("noise/white/noise_",I0,"_",I0,"GHz.fits")',$
+                                   noiseID,freqs[f]),/silent)*whiteNoise*1e6
+  endif else if keyword_set(noisePSDs) then begin
+   noiseMap=readfits(simDir+string(format='("noise/white/noise_",I0,"_",I0,"GHz.fits")',$
+                                   noiseID,freqs[f]),/silent)
+   if ((size(noisePSDs[*,*,f]))[0] eq 1) then begin
+    noisePSD=fltarr(nx,ny)
+    for i=1,ny-1 do noisePSD[*,i]=noisePSDs[*,f]
+   endif else noisePSD=noisePSDs[*,*,f]
+   noiseMap=real_part(fft(fft(noiseMap)*noisePSD*1e6/(!dtor/60),1))
+  endif else begin
+   print,"Error - set either noisePSD or whitenoise when specifying noiseid."
+   return,-1
+  endelse
+ endif else if (keyword_set(whiteNoise) or keyword_set(noisePSDs)) then begin
+  print,"Error - when using noisePSDs or whitenoise, please include a noiseID to load phases from"
+  return,-1
+ endif
+
+ if ~keyword_set(noiseEnvelope) then noiseEnvelope=1.
+ skymaps[*,*,f]+=noiseMap*noiseEnvelope
+
+end ;loop over freqs
+
+if keyword_set(stopit) then stop
+return,skymaps
+
+end
