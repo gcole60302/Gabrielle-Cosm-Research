@@ -17,7 +17,7 @@ z = np.arange(1, 100, dtype=float)
 EFFECT = np.zeros(100, dtype=float)
 
 for i in range(0,99):
-    EFFECT[i] = (OmmM[i])*(1+z[i])**3 + (OmmK[i])*(1 +z[i])**2 + (OmmL[i])
+    EFFECT[i] = np.sqrt((OmmM[i])*(1+z[i])**3 + (OmmK[i])*(1 +z[i])**2 + (OmmL[i]))
     
 
 print EFFECT
