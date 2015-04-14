@@ -1,5 +1,6 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import numpy as np
+
 
 alpha = 1.0510 
 beta = 5.4905 
@@ -31,6 +32,11 @@ M500 =(((4.)*(np.pi))/(3.))*(((R500)**3)*(500)*(rho_crit))
 #used equation from arnaud paper(2010)
 
 
-x = np.arange(1,100) / R500
+x = np.arange(1,100) / (R500)
+y = np.zeros(99)
+for i in range(len(x)):
+    y[i]=(P_0)/(((c500*x[i])**gamma)*(1 + (c500*x[i])**alpha)**index)
 
-plt.plot((P_0)/(((c500*x)**gamma)(1 + (c500*x)**alpha)**index))
+plt.plot(x,y)
+plt.show()
+
