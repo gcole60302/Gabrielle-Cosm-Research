@@ -31,7 +31,6 @@ R500 = (0.879)#*(3.08568025e22)
 M500 =(((4.)*(np.pi))/(3.))*(((R500)**3)*(500)*(rho_crit))
 #used equation from arnaud paper(2010)
 
-q=10e3
 x = np.arange(1,10,0.1) / (R500)
 y = np.zeros(90)
 for i in range(len(x)):
