@@ -135,7 +135,7 @@ def MAP(z, M500):
     plt.imshow(TatR)
     plt.colorbar()
 ######################################
-#TEST DATA AND TEST RUN (WORKS: 4/27/15)
+#TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
 #vects = np.linspace(0, 5,21)
 #x,y = np.meshgrid(vects, vects)
 #DistR = np.zeros((21, 21))
