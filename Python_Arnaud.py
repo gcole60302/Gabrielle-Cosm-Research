@@ -49,22 +49,22 @@ alpha_p = 0.12 #constant of correction see Arnaud (2010)
 
 #Here are some functions we need 
 def Rho_Crit(z):
-    return ((((np.sqrt((0.27)*(1. + z)**(3) + (1. - 0.27))))**(2))*(3.)*((72.)**(2.)))/((8.)*(np.pi)*(G))
+    return (((OmegaM)*(1. + z)**(3.) + (1. - OmegaM))*(3.)*((72.)**(2.)))/((8.)*(np.pi)*(G))
 
 def E_FACT(z):
-    return np.sqrt((0.27)*(1. + z)**(3) + (1. - 0.27))
+    return np.sqrt((OmegaM)*(1. + z)**(3.) + (1. - OmegaM))
 
 def E_FACT1(z):
-    return (1.)/(np.sqrt((0.27)*(1. + z)**(3) + (1. - 0.27)))
+    return (1.)/(np.sqrt((OmegaM)*(1. + z)**(3.) + (1. - OmegaM)))
 
 def ANG_DIAM_DIST(z):
-    return (((c)/(72.))*(scipy.integrate.romberg(E_FACT1, 0, z)))/(1+z)
+    return (((c)/((72.)*(1000.)))*(scipy.integrate.romberg(E_FACT1, 0, z)))/(1+z)
 
 ###################################################################
 
 #Here we define the output function
 def PROFILE(z, M500):
-    R500 = ((M500)/((2500./3.)*(np.pi)*(Rho_Crit(z))))**(1./3.)
+    R500 = ((M500)/((4./3.)*(np.pi)*(500.)*(Rho_Crit(z))))**(1./3.)
     x = np.arange(0,(100.)*(9.)*(R500)/(100.), 0.001)
     q = np.zeros(len(x))
     for i in range(len(x)):
@@ -72,16 +72,17 @@ def PROFILE(z, M500):
         r = y1
         upperlim = np.sqrt(((9.)*(R500))**(2.) - (r)**(2.))
         def ARNAUD_PROJ(x1):
-            return (1.)/(((((c500/R500)**2)*((x1**2. + y1**2.)))**(gamma/2.))*((1 + (((c500/R500)**2.)*(x1**2. + y1**2.))**(alpha/2))**(index)))
+            return (1.)/(((((c500/R500)**2.)*((x1**2. + y1**2.)))**(gamma/2.))*((1. + (((c500/R500)**2.)*(x1**2. + y1**2.))**(alpha/2))**(index)))
         if r < (9.)*(R500):
             q[i] = scipy.integrate.romberg(ARNAUD_PROJ,0.001, upperlim, divmax=20)
         elif r >(9.)*(R500):
             break
-    PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
+    PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1.0e6)
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
     r_over_r500= (c)/((c500)*(R500))
-    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)*(1.)
+    #r_arcmin = (x)/ (R500)*(ANG_DIAM_DIST(z))
+    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (f)*(1.0e6)*(2.73)
     plt.plot(r_arcmin, dT_uK)
     plt.ylabel('Temperature (uK)')

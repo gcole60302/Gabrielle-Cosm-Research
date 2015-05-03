@@ -93,6 +93,29 @@ def PROFILET(z, M500):
     dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
     return dT_uK
 
+##########################################
+def PROFILER(z, M500):
+    R500 = ((M500)/((2500./3.)*(np.pi)*(Rho_Crit(z))))**(1./3.)
+    x = np.arange(0,(100.)*(9.)*(R500)/(100.), 0.001)
+    q = np.zeros(len(x))
+    for i in range(len(x)):
+        y1= x[i]
+        r = y1
+        upperlim = np.sqrt(((9.)*(R500))**(2.) - (r)**(2.))
+        def ARNAUD_PROJ(x1):
+            return (1.)/(((((c500/R500)**2)*((x1**2. + y1**2.)))**(gamma/2.))*((1 + (((c500/R500)**2.)*(x1**2. + y1**2.))**(alpha/2))**(index)))
+        if r < (9.)*(R500):
+            q[i] = scipy.integrate.romberg(ARNAUD_PROJ,0.001, upperlim, divmax=20)
+        elif r >(9.)*(R500):
+            break
+    PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
+    c = ((x)*(c500))/(R500)
+    f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
+    r_over_r500= (c)/((c500)*(R500))
+    absy_150ghz = f
+    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)
+    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
+    return r_arcmin
 ##########################################    
 
 #Here we define the output function
@@ -137,30 +160,57 @@ def MAP(z, M500):
     TatR= interpol(DistR)
     plt.imshow(TatR, interpolation='bicubic', origin='lower')
     plt.colorbar()
-######################################
-#TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
-#vects = np.linspace(0, 5,21)
-#x,y = np.meshgrid(vects, vects)
-#DistR = np.zeros((21, 21))
-#for i in range(21):
-    #for j in range(21):
-        #DistR[i,j] = np.sqrt((x[10,10] - x[i,j])**2 +(y[10,10] - y[i,j])**2)
-        
-#T= np.arange(0,100,2)
-#R= np.arange(0, 3.4, .068)
-#interpol = scipy.interpolate.UnivariateSpline(R,T, k=5)
-#xinterpol= np.linspace(0,4,100000)
-#TatR= interpol(DistR)
-#plt.imshow(TatR)
-#plt.colorbar()
-######################################
-   
 
-#MaxR = np.max(RArray)
-#RoundR = np.int8(np.ceil(MaxR))
-#vects = np.linspace(0, RoundR,RoundR*4 +1)
-#x,y = np.meshgrid(vects, vects)
-#DistR = np.zeros((RoundR*4), (RoundR*4))
-#for i in range(RoundR*4):
- #   for j in range(RoundR*4):
-  #      DistR[i,j] = np.sqrt((x[RoundR/2,RoundR/2] - x[:j])**2 +(y[RoundR/2,RoundR/2] - y[:j])**2)
+######################################
+def NMap():
+    SIZE = 405
+    vects = np.linspace(0,101, SIZE)
+    x,y = np.meshgrid(vects, vects)
+    N1 = np.zeros((SIZE,SIZE))
+    for i in range(SIZE):
+        for j in range(SIZE):
+            N1[i,j] = np.random.normal(0.0, 1.8)
+    plt.imshow(N1, origin='lower')
+    plt.colorbar()
+    plt.show()
+    return N1
+
+def FULLMAP():
+    SIZE = 405
+    vects = np.linspace(0,101, SIZE)
+    x,y = np.meshgrid(vects, vects)
+    N =np.zeros((SIZE,SIZE))
+    N1 =np.zeros((SIZE,SIZE))
+    X= np.arange(20, SIZE-20)
+    Y= np.arange(20, SIZE-20)
+    Centx = np.random.choice(X,1)
+    CentX = Centx[0]
+    Centy = np.random.choice(Y,1)
+    CentY = Centy[0]
+    z = np.arange(.5,2.3,0.1)
+    m500 = np.arange(1e13,10e15, 1.3e9)
+    zz = np.random.choice(z,1)
+    m500m500 = np.random.choice(m500,1)
+    Z = zz[0]
+    M500 = m500m500[0]
+    R= PROFILER(Z,M500) 
+    T= PROFILET(Z,M500)
+    MaxR = np.int8(np.ceil(np.max(R)))
+    if MaxR %2 == 0:
+        MaxR = MaxR +1
+    else:
+        MaxR = MaxR
+    InterR =((MaxR)*(4))/2
+    CenPo = (MaxR)*(2)
+    for i in range(CentX-InterR, CentX+InterR):
+        for j in range(CentY-InterR, CentY+InterR):
+            N1[i,j] = np.sqrt((x[CentX,CentY] - x[i,j])**2 +(y[CentX,CentY] - y[i,j])**2)
+    interpol = scipy.interpolate.UnivariateSpline(R,T, k=5)
+    tatr= interpol(N1)
+    TatR = N + N1
+    plt.imshow(TatR, interpolation='bicubic', origin='lower')
+    plt.colorbar()
+    plt.show()
+    return TatR
+
+    
