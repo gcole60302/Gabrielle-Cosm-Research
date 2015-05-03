@@ -67,32 +67,6 @@ def E_FACT1(z):
 def ANG_DIAM_DIST(z):
     return (((c)/((72.)*(1000.)))*(scipy.integrate.romberg(E_FACT1, 0, z)))/(1+z)
 
-###################################################################
-
-#Here we define the output function
-def PROFILET(z, M500):
-    R500 = ((M500)/((2500./3.)*(np.pi)*(Rho_Crit(z))))**(1./3.)
-    x = np.arange(0,(100.)*(9.)*(R500)/(100.), 0.001)
-    q = np.zeros(len(x))
-    for i in range(len(x)):
-        y1= x[i]
-        r = y1
-        upperlim = np.sqrt(((9.)*(R500))**(2.) - (r)**(2.))
-        def ARNAUD_PROJ(x1):
-            return (1.)/(((((c500/R500)**2)*((x1**2. + y1**2.)))**(gamma/2.))*((1 + (((c500/R500)**2.)*(x1**2. + y1**2.))**(alpha/2))**(index)))
-        if r < (9.)*(R500):
-            q[i] = scipy.integrate.romberg(ARNAUD_PROJ,0.001, upperlim, divmax=20)
-        elif r >(9.)*(R500):
-            break
-    PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
-    c = ((x)*(c500))/(R500)
-    f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
-    absy_150ghz = f
-    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)
-    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
-    return dT_uK
-
 ##########################################    
 
 #Here we define the output function
@@ -137,6 +111,7 @@ def MAP(z, M500):
     TatR= interpol(DistR)
     plt.imshow(TatR, interpolation='bicubic', origin='lower')
     plt.colorbar()
+    plt.show()
 ######################################
 #TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
 #vects = np.linspace(0, 5,21)
