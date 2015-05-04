@@ -21,12 +21,13 @@ from sympy import *
 import scipy.optimize as opt
 import scipy.interpolate
 ##################################
-
-vects = np.linspace(0,5, 400)
-N = np.zeros((400,400))
-for i in range(400):
-    for j in range(400):
-        N[i,j] = np.random.normal(0.0, 1.8)
-
-plt.imshow(N, origin='lower')
+def WMAP():
+    SIZE = 405
+    vects = np.linspace(0,5, SIZE)
+    N = np.zeros((SIZE,SIZE))
+    for i in range(SIZE):
+        for j in range(SIZE):
+            N[i,j] = np.random.normal(0.0, 1.8)
+    plt.imshow(N, origin='lower')
+    return N
 

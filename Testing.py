@@ -23,7 +23,7 @@ import scipy.interpolate
 
 ##################################
 
-#TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
+#TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 5/2/15)
 a=200
 vects = np.linspace(0, 5,400)
 x,y = np.meshgrid(vects, vects)
