@@ -19,7 +19,8 @@ import matplotlib.image as mpimg
 from numpy import linspace
 from sympy import *
 import scipy.optimize as opt
-
+import matplotlib as mpl
+from matplotlib import pyplot
 import scipy.interpolate
 
 ###############################################
@@ -88,7 +89,7 @@ def PROFILET(z, M500):
     PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
+    r_over_r500= (c)/((c500))*(R500)
     absy_150ghz = f
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
@@ -112,7 +113,7 @@ def PROFILER(z, M500):
     PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
+    r_over_r500= (c)/((c500))*(R500)
     absy_150ghz = f
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
@@ -137,7 +138,7 @@ def MAP(z, M500):
     PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/(hubble70)**(3./2.))*(1e6)
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
+    r_over_r500= (c)/((c500))*(R500)
     absy_150ghz = f
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
@@ -170,63 +171,59 @@ def NMap():
     N1 = np.zeros((SIZE*4,SIZE*4))
     for i in range(SIZE*4):
         for j in range(SIZE*4):
-            N1[i,j] = np.random.normal(0.0, 5.8)
+            N1[i,j] = np.random.normal(0.0, 1600.3)
     #plt.imshow(N1, origin='lower')
     #plt.colorbar()
     #plt.show()
     return N1
 
 def FULLMAP(n):
-#Empty grid size set (SIZE x SIZE)
+#Empty grid size set (SIZE*4 x SIZE*4 archmin, with .25archmin pixels)
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
     x,y = np.meshgrid(vects, vects)
 #Empty grids of fixed size are set   
-    N1 = np.zeros((n,SIZE*4,SIZE*4))
-    TatR = np.zeros((n,SIZE*4,SIZE*4))
     SUM = np.zeros((SIZE*4,SIZE*4))
     for k in range(n):
+#Define empty arrays for later
+        N1 = np.zeros((SIZE*4,SIZE*4))
+        T_at_R = np.zeros((SIZE*4,SIZE*4))
 #Random location details
-        X = np.arange(45, len(x)-45)
-        Y = np.arange(45, len(y)-45)
-        CentX = np.random.choice(X,1)[0]
-        CentY = np.random.choice(Y,1)[0]
+        X = np.arange(100, len(x)-101)
+        Y = np.arange(100, len(y)-101)
+        CentClusIndexA = np.random.choice(X,1)[0]
+        CentClusIndexB = np.random.choice(Y,1)[0]
 #Random Cluster details
         z = np.arange(.7,2.9,0.1)
-        m500 = np.arange(1e13,10e15, 1.3e9)
+        m500 = np.arange(1e13,10e14, 1.3e9)
         Z = np.random.choice(z,1)[0]
         M500 = np.random.choice(m500,1)[0]
         R = PROFILER(Z,M500)
         T = (1)*PROFILET(Z,M500)
-        print CentX, CentY, Z, M500
+        print CentClusIndexA, CentClusIndexB, Z, M500
 #Shape of smaller plot
         MaxR = np.int8(np.ceil(np.max(R)))
         if MaxR %2 == 0:
             MaxR = MaxR +1
         else:
             MaxR = MaxR
-
-        InterR =((MaxR)*(10))/2
-    
-        for i in range(CentX-InterR, CentX+InterR):
-            for j in range(CentY-InterR, CentY+InterR):
-                N1[k,i,j] = np.sqrt(((x[CentX,CentY] +(1/8.)) - (x[i,j] + (1/8.)))**2 +((y[CentX,CentY] +(1/8.)) - (y[i,j] + (1/8.)))**2)
+        Size = 2
+        InterR =((MaxR)*(Size))/2
+#Create radial distance array over proper range
+        for i in range(CentClusIndexA-InterR, CentClusIndexA+InterR):
+            for j in range(CentClusIndexB-InterR, CentClusIndexB+InterR):
+                N1[i,j] = np.sqrt(((x[CentClusIndexA,CentClusIndexB] +(1/8.)) - (x[i,j] + (1/8.)))**2 +((y[CentClusIndexA,CentClusIndexB] +(1/8.)) - (y[i,j] + (1/8.)))**2)
+#Begin the extrapolation
         interpol = scipy.interpolate.UnivariateSpline(R,T, k=5, ext=1)
-        TatR[k] = interpol(N1[k])
-        tatr = interpol(0)
-        for i in range(len(TatR[k])):
-            for j in range(len(TatR[k])):
-                if TatR[k,i,j] == tatr:
-                    TatR[k,i,j] = 0
-                else:
-                    continue
-    for k in range(n):
-        SUM = SUM+ TatR[k]
-    
-    plt.imshow(SUM+NMap(),interpolation='bicubic', origin='lower')
+        for i in range(CentClusIndexA-InterR, CentClusIndexA+InterR):
+            for j in range(CentClusIndexB-InterR, CentClusIndexB+InterR):
+                T_at_R[i,j] = interpol(N1[i,j])
+        SUM = SUM + T_at_R
+    SUM=SUM
+    plt.imshow(SUM +NMap(),interpolation='bicubic', origin='lower') #vmin=-100,vmax=100) #extent=[0,SIZE,0,SIZE])
     plt.colorbar()
     plt.show()
-    return SUM + NMap()
+    return SUM + NMap() 
 
 
 

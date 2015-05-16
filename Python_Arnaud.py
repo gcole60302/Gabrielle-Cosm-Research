@@ -80,9 +80,10 @@ def PROFILE(z, M500):
             break
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
-    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(20.)
+    r_over_r500 = (c)/((c500))*(R500)
+    r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (f)*(1.0e6)*(2.73)
+    plt.figure()
     plt.plot(r_arcmin, dT_uK)
     plt.ylabel('Temperature (uK)')
     plt.xlabel('Radial Distance (Arcmin)')

@@ -87,7 +87,7 @@ def MAP(z, M500):
             break
     c = ((x)*(c500))/(R500)
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
-    r_over_r500= (c)/((c500)*(R500))
+    r_over_r500= (c)/((c500))*(R500)
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (f)*(1.0e6)*(2.73)
     R = r_arcmin
@@ -105,12 +105,13 @@ def MAP(z, M500):
     for i in range(InterR):
         for j in range(InterR):
             DistR[i,j] = np.sqrt((x[CenPo,CenPo] - x[i,j])**2 +(y[CenPo,CenPo] - y[i,j])**2)
-    interpol = scipy.interpolate.UnivariateSpline(R,T, k=5)
+    interpol = scipy.interpolate.UnivariateSpline(4.*R,T, k=5) #Do I need a factor of 4 in front of the R, will this fix the units issues?
     xinterpol= np.linspace(0,4,10000000)
     TatR= interpol(DistR)
     plt.imshow(TatR, interpolation='bicubic', origin='lower')
     plt.colorbar()
     plt.show()
+    return TatR
 ######################################
 #TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
 #vects = np.linspace(0, 5,21)
