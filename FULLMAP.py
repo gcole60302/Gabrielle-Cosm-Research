@@ -40,8 +40,9 @@ k_b= 1.3806503e-23 #Blotsz const in m^2*kg*s^-2*K^-1
 c = 3.0e8 #speed of light in m*s^-1
 q= 1.60217646e-19 #unit of charge in joules equal to electron volt
 e_rm = ((m_e)*(c)**2)/((1000)*(q)) #rest mass energy of electron in KeV
-y_const = (sigma_T)/(e_rm) # compt. parameter constant
-G= 4.30117902e-9 # gravitational constant, km^2*Mpc*s^-2
+y_const = (sigma_T)/(e_rm) #compt. parameter constant
+G= 4.30117902e-9 #gravitational constant, km^2*Mpc*s^-2
+h= 6.626066957e-34 #planck's constant kg*m^2*s^-1
 
 ###################################################################
 
@@ -69,6 +70,19 @@ def E_FACT1(z):
 def ANG_DIAM_DIST(z):
     return (((c)/((72.)*(1000.)))*(scipy.integrate.romberg(E_FACT1, 0, z)))/(1+z)
 
+def ARRAY_AVG(x):
+    s = np.sum(x[x!=0])
+    l = np.float64(len(x[x!=0]))
+    if l == 0:
+        a = 0
+    else:
+        a = np.sum(x[x!=0])/np.float64(len(x[x!=0]))
+    return a
+
+def FREQ(f, T): # Temperature in Kelvin and f in s^-1
+    x = ((h)*(f))/((k_b)*(T))
+    return ((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.)
+    
 ###################################################################
 
 #Here we define the output function
@@ -171,13 +185,14 @@ def NMap():
     N1 = np.zeros((SIZE*4,SIZE*4))
     for i in range(SIZE*4):
         for j in range(SIZE*4):
-            N1[i,j] = np.random.normal(0.0, 1600.3)
+            N1[i,j] = np.random.normal(0.0, 30.0)
     #plt.imshow(N1, origin='lower')
     #plt.colorbar()
     #plt.show()
     return N1
 
 def FULLMAP(n):
+    Cluster = np.zeros((n, 4))
 #Empty grid size set (SIZE*4 x SIZE*4 archmin, with .25archmin pixels)
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
@@ -193,14 +208,14 @@ def FULLMAP(n):
         Y = np.arange(100, len(y)-101)
         CentClusIndexA = np.random.choice(X,1)[0]
         CentClusIndexB = np.random.choice(Y,1)[0]
-#Random Cluster details
-        z = np.arange(.7,2.9,0.1)
-        m500 = np.arange(1e13,10e14, 1.3e9)
+#Random Cluster details, we use normal distributions about means 0.5 for
+#the redshift and 5e14 for the mass, standard deviations are as coded
+        z = np.arange(0.2,1.2,.1)
         Z = np.random.choice(z,1)[0]
-        M500 = np.random.choice(m500,1)[0]
+        M500 = np.abs(np.random.normal(5e14, 1.0e14, 1)[0])
         R = PROFILER(Z,M500)
         T = (1)*PROFILET(Z,M500)
-        print CentClusIndexA, CentClusIndexB, Z, M500
+        Cluster[k] = CentClusIndexA, CentClusIndexB, Z, M500
 #Shape of smaller plot
         MaxR = np.int8(np.ceil(np.max(R)))
         if MaxR %2 == 0:
@@ -220,13 +235,62 @@ def FULLMAP(n):
                 T_at_R[i,j] = interpol(N1[i,j])
         SUM = SUM + T_at_R
     SUM=SUM
-    plt.imshow(SUM +NMap(),interpolation='bicubic', origin='lower') #vmin=-100,vmax=100) #extent=[0,SIZE,0,SIZE])
+    plt.figure()
+    plt.imshow(SUM +NMap(),interpolation= 'bicubic', origin='lower')
+    plt.title('var 30')
     plt.colorbar()
     plt.show()
-    return SUM + NMap() 
-
-
-
+    T = SUM +NMap()
+#Make cut outs around each cluster in the map
+    for q in range(n):
+        A = T[Cluster[q,0]-31:Cluster[q,0]+32,Cluster[q,1]-32:Cluster[q,1]+33]
+        plt.figure()
+        plt.imshow(A, interpolation= 'bicubic', origin='lower')
+        plt.title("")
+        plt.grid()
+        plt.colorbar()
+        plt.show()
+#Make equal size grid to calculate radial distances again in archmin with quarter archmin pixels
+        SIZE1 = len(A[0])
+        SIZE2 = len(A)
+        vects1 = np.linspace(0,SIZE1, SIZE1*4+1)
+        x1,y1 = np.meshgrid(vects1, vects1)
+        DIST = np.zeros((SIZE2,SIZE1))
+        for i in range(SIZE2):
+            for j in range(SIZE1):
+                DIST[i,j] = np.sqrt(((x1[SIZE1/2,SIZE1/2] +(1/8.)) - (x1[i,j] + (1/8.)))**2 +((y1[SIZE1/2,SIZE1/2] +(1/8.)) - (y1[i,j] + (1/8.)))**2)
+#Reshape DIST and cluster array, A into a single column.
+#Establish empty array for radial/temperature values, R_T
+#Establish empty array for radial distances, AVG_R
+#stablish empty array for temperature values, AVG_T
+        LIST1 = DIST.reshape(4095,1)
+        LIST2 = A.reshape(4095,1)
+        R_T = np.zeros((4095,2))
+        AVG_R_T =np.zeros((4095,4095))
+        AVG_T = np.zeros(4095)
+        AVG_R = np.zeros(4095)
+#Turn DIST and A into a joint two colunm array
+        for i in range(4095):
+            R_T[i,0] = LIST1[i]
+        for i in range(4095):
+            R_T[i,1] = LIST2[i]
+#Create array of all temperature values associated with a given radial range
+        for i in range(4095):
+            t = R_T[i,0]
+            AVG_R[i] = t
+            for j in range(4095):
+                if R_T[j,0] == t and R_T[j,0]!= 0:
+                    AVG_R_T[i,j] = R_T[j,1]
+                    R_T[j,0] = 0
+                else:
+                    continue
+#Average all values in a given radial range
+        for i in range(4095):
+            AVG_T[i] = ARRAY_AVG(AVG_R_T[i])
+#Plot averaged temperatures as a function of radial distances
+        plt.figure()
+        plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0])
+    return Cluster
 
 
 

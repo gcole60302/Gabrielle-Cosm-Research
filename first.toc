@@ -1,0 +1,2 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Petite d\IeC {\'e}monstration}{1}

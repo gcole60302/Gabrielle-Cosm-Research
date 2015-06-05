@@ -20,7 +20,7 @@ from numpy import linspace
 from sympy import *
 import scipy.optimize as opt
 import scipy.interpolate
-
+from scipy.interpolate import interp1d
 ###############################################
 #Here's a whole bunch of constants
 H0=72. #km / (s*Mpc)
@@ -71,6 +71,7 @@ def ANG_DIAM_DIST(z):
 
 #Here we define the output function
 def MAP(z, M500):
+#Create the two arrays we need (radial distance and temp)
     R500 = ((M500)/((4./3.)*(np.pi)*(500.)*(Rho_Crit(z))))**(1./3.)
     PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/((hubble70)**(3./2.)))*(1.0e6)
     x = np.arange(0,(100.)*(6.)*(R500)/(100.), 0.01)
@@ -92,50 +93,40 @@ def MAP(z, M500):
     dT_uK = (f)*(1.0e6)*(2.73)
     R = r_arcmin
     T = dT_uK
+#Round the radial distance array up to the nearest odd number
     MaxR = np.int8(np.ceil(np.max(R)))
     if MaxR %2 == 0:
         MaxR = MaxR +1
     else:
         MaxR = MaxR
-    InterR =(MaxR)*(4)+1
-    CenPo = (MaxR)*(2)
-    vects = np.linspace(0,MaxR,InterR)
+    Dim = np.int8(np.ceil((MaxR)/(np.sqrt(2))))
+#Create meshgrid of diagonal distance approxiamately 2*MaxR by 2*MaxR
+#by quarter units
+    vects = np.linspace(0,2*Dim,2*Dim*4+1)
     x,y = np.meshgrid(vects, vects)
-    DistR = np.zeros((InterR, InterR))
-    for i in range(InterR):
-        for j in range(InterR):
-            DistR[i,j] = np.sqrt((x[CenPo,CenPo] - x[i,j])**2 +(y[CenPo,CenPo] - y[i,j])**2)
-    interpol = scipy.interpolate.UnivariateSpline(4.*R,T, k=5) #Do I need a factor of 4 in front of the R, will this fix the units issues?
-    xinterpol= np.linspace(0,4,10000000)
-    TatR= interpol(DistR)
-    plt.imshow(TatR, interpolation='bicubic', origin='lower')
-    plt.colorbar()
-    plt.show()
-    return TatR
-######################################
-#TEST DATA AND TEST RUN W/ SAMPLE DATA (TESTED: 4/27/15)
-#vects = np.linspace(0, 5,21)
-#x,y = np.meshgrid(vects, vects)
-#DistR = np.zeros((21, 21))
-#for i in range(21):
-    #for j in range(21):
-        #DistR[i,j] = np.sqrt((x[10,10] - x[i,j])**2 +(y[10,10] - y[i,j])**2)
-        
-#T= np.arange(0,100,2)
-#R= np.arange(0, 3.4, .068)
-#interpol = scipy.interpolate.UnivariateSpline(R,T, k=5)
-#xinterpol= np.linspace(0,4,100000)
-#TatR= interpol(DistR)
-#plt.imshow(TatR)
-#plt.colorbar()
-######################################
-   
+#Create empty 2d arrays for radial distance calculation and temp population
+#with same dimesions of the meshgrid
+    DistR = np.zeros((2*Dim*4+1, 2*Dim*4+1))
+    T_at_R = np.zeros((2*Dim*4+1, 2*Dim*4+1))
+#Populate DistR with radial distances from center to all other points
+    for i in range(2*Dim*4+1):
+        for j in range(2*Dim*4+1):
+            DistR[i,j] = np.sqrt((x[Dim*4,Dim*4] - x[i,j])**2 +(y[Dim*4,Dim*4] - y[i,j])**2)
+#Populate T_at_R with temp values corresponding to radial distances
+    interpol = interp1d(R,T, kind='cubic', bounds_error=False, fill_value=0) 
+    for i in range(2*Dim*4+1):
+        for j in range(2*Dim*4+1):
+            T_at_R[i,j] = interpol(DistR[i,j])
 
-#MaxR = np.max(RArray)
-#RoundR = np.int8(np.ceil(MaxR))
-#vects = np.linspace(0, RoundR,RoundR*4 +1)
-#x,y = np.meshgrid(vects, vects)
-#DistR = np.zeros((RoundR*4), (RoundR*4))
-#for i in range(RoundR*4):
- #   for j in range(RoundR*4):
-  #      DistR[i,j] = np.sqrt((x[RoundR/2,RoundR/2] - x[:j])**2 +(y[RoundR/2,RoundR/2] - y[:j])**2)
+    plt.figure() 
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(T_at_R, interpolation='bicubic', origin='lower',vmin=0, vmax= np.max(T))
+    plt.xticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
+    plt.yticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
+    cbar = plt.colorbar()
+    cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
+
+    return Dim
+
+##############################################################
