@@ -80,9 +80,9 @@ def ARRAY_AVG(x):
         a = np.sum(x[x!=0])/np.float64(len(x[x!=0]))
     return a
 
-def FREQ(f): # Temperature (mean CMB temperature), T, in Kelvin and frequency, f, in GHz 
-    x = ((h)*((f)*(1.0e9)))/((k_b)*(2.73))
-    return (((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.))
+def FREQ(f, T=2.73): # Temperature (mean CMB temperature), T, in micro Kelvin and frequency, f, in GHz 
+    x = ((h)*((f)*(1.0e9)))/((k_b)*((T)/(1.0e6)))
+    return (T)*(((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.))
 
 ###################################################################
 
@@ -179,20 +179,17 @@ def MAP(z, M500):
     plt.colorbar()
 
 ######################################
-def NMap():
+def NMap(var):
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
     x,y = np.meshgrid(vects, vects)
     N1 = np.zeros((SIZE*4,SIZE*4))
     for i in range(SIZE*4):
         for j in range(SIZE*4):
-            N1[i,j] = np.random.normal(0.0, 18.0)
-    #plt.imshow(N1, origin='lower')
-    #plt.colorbar()
-    #plt.show()
+            N1[i,j] = np.random.normal(0.0, var)
     return N1
 
-def FULLMAP(n):
+def FULLMAP(n, M500, z, x, y):
 #Define some empty arrays we need for later. One for cluster information
 #the other for postage stamp cluster image data and the final one for
 #the arrays to make final plots of temp as function of radial
@@ -209,20 +206,16 @@ def FULLMAP(n):
 #Define empty arrays for later
         N1 = np.zeros((SIZE*4,SIZE*4))
         T_at_R = np.zeros((SIZE*4,SIZE*4))
-#Random location details
-        X = np.arange(100, len(x)-101)
-        Y = np.arange(100, len(y)-101)
-        CentClusIndexA = np.random.choice(X,1)[0]
-        CentClusIndexB = np.random.choice(Y,1)[0]
-#Random Cluster details, we use normal distributions about means 0.5 for
-#the redshift and 5e14 for the mass, standard deviations are as coded
-        z = np.arange(0.2,1.2,.1)
-        Z = np.random.choice(z,1)[0]
-        M500 = np.abs(np.random.normal(3.5e14, 1.0e14, 1)[0])
+#Location details
+        X = x[k]
+        Y = y[k]
+#Cluster details
+        Z = z[k]
+        M500 = M500[k]
+#Arnad Profifle for the cluster, and info saved to array
         R = PROFILER(Z,M500)
         T = (1)*PROFILET(Z,M500)
-        Cluster[k] = CentClusIndexA, CentClusIndexB, Z, M500
-        print Z, M500
+        Cluster[k] = X, Y, Z, M500
 #Shape of smaller plot
         MaxR = np.int8(np.ceil(np.max(R)))
         if MaxR %2 == 0:
@@ -232,19 +225,19 @@ def FULLMAP(n):
         Size = 2
         InterR =((MaxR)*(Size))/2
 #Create radial distance array over proper range
-        for i in range(CentClusIndexA-InterR, CentClusIndexA+InterR):
-            for j in range(CentClusIndexB-InterR, CentClusIndexB+InterR):
-                N1[i,j] = np.sqrt(((x[CentClusIndexA,CentClusIndexB] +(1/8.)) - (x[i,j] + (1/8.)))**2 +((y[CentClusIndexA,CentClusIndexB] +(1/8.)) - (y[i,j] + (1/8.)))**2)
+        for i in range(X-InterR, X+InterR):
+            for j in range(Y-InterR, Y+InterR):
+                N1[i,j] = np.sqrt(((x[X,Y] +(1/8.)) - (x[i,j] + (1/8.)))**2 +((y[X,Y] +(1/8.)) - (y[i,j] + (1/8.)))**2)
 #Begin the extrapolation
         interpol = scipy.interpolate.UnivariateSpline(R,T, k=5, ext=1)
-        for i in range(CentClusIndexA-InterR, CentClusIndexA+InterR):
-            for j in range(CentClusIndexB-InterR, CentClusIndexB+InterR):
+        for i in range(X-InterR, X+InterR):
+            for j in range(Y-InterR, Y+InterR):
                 T_at_R[i,j] = interpol(N1[i,j])
         SUM = SUM + T_at_R
     SUM=SUM
     plt.figure()
-    plt.imshow(SUM +NMap(),interpolation= 'bicubic', origin='lower')
-    plt.title('var 18')
+    plt.imshow(SUM +NMap(30.0),interpolation= 'bicubic', origin='lower')
+    plt.title('var 30')
     plt.colorbar()
     plt.show()
     T = SUM +NMap()
@@ -255,7 +248,6 @@ def FULLMAP(n):
         plt.imshow(A, interpolation= 'bicubic', origin='lower')
         plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
         plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
-        plt.title(str(Cluster[q,2:4]))
         plt.grid()
         cbar = plt.colorbar()
         cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
@@ -273,43 +265,42 @@ def FULLMAP(n):
 #Establish empty array for radial/temperature values, R_T
 #Establish empty array for radial distances, AVG_R
 #stablish empty array for temperature values, AVG_T
-        LIST1 = DIST.reshape(SIZE1*SIZE2,1)
-        LIST2 = A.reshape(SIZE1*SIZE2,1)
-        R_T = np.zeros((SIZE1*SIZE2,2))
-        AVG_R_T =np.zeros((SIZE1*SIZE2,SIZE1*SIZE2))
-        AVG_T = np.zeros(SIZE1*SIZE2)
-        AVG_R = np.zeros(SIZE1*SIZE2)
+        LIST1 = DIST.reshape(4095,1)
+        LIST2 = A.reshape(4095,1)
+        R_T = np.zeros((4095,2))
+        AVG_R_T =np.zeros((4095,4095))
+        AVG_T = np.zeros(4095)
+        AVG_R = np.zeros(4095)
 #Turn DIST and A into a joint two colunm array
-        for i in range(SIZE1*SIZE2):
+        for i in range(4095):
             R_T[i,0] = LIST1[i]
-        for i in range(SIZE1*SIZE2):
+        for i in range(4095):
             R_T[i,1] = LIST2[i]
 #Create array of all temperature values associated with a given radial range
-        for i in range(SIZE1*SIZE2):
+        for i in range(4095):
             t = R_T[i,0]
             AVG_R[i] = t
-            for j in range(SIZE1*SIZE2):
+            for j in range(4095):
                 if R_T[j,0] == t and R_T[j,0]!= 0:
                     AVG_R_T[i,j] = R_T[j,1]
                     R_T[j,0] = 0
                 else:
                     continue
 #Average all values in a given radial range
-        for i in range(SIZE1*SIZE2):
+        for i in range(4095):
             AVG_T[i] = ARRAY_AVG(AVG_R_T[i])
 #Plot averaged temperatures as a function of radial distances
         plt.figure()
-        plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+        plt.ylabel(r'$\mathrm{Temperature} \/\mathrm{Decrement}\/\mathrm{(\mu K)}$', fontsize=16)
         plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
-        plt.title(str(Cluster[q,2:4]))
-        #plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}\/\mathrm{Scatter}$', fontsize=18)
+        plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}\/\mathrm{Scatter}$', fontsize=18)
         plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0])
-        plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r')
+        plt.plot(PROFILER(), PROFILET())
 #Save postage clusters into one array
 #Save postage clusters radials and temperatures into one array
         TOTAL_IMG[q] = A
         TOTAL_PLT[q] = AVG_R[AVG_R!=0], AVG_T[AVG_T!=0]
-    return 
+    return TOTAL_IMG[0], TOTAL_IMG[1]
 
 
 

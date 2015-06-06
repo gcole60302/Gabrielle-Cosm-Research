@@ -29,17 +29,18 @@ hubble = H0/100.
 hubble70 = H0/70.
 mmw = 0.59 #mean molecular weight of gas
 mu_e = 1.143 #mean molecular weight of electrons in cluster
-m_p =1.6726e-27 #proton mass in kg
-m_e =9.11e-31 #electron mass in kg
+m_p = 1.6726e-27 #proton mass in kg
+m_e = 9.11e-31 #electron mass in kg
 mpc = 3.08568025e22   #megaparsec in meters
 Msol = 1.98892e30 #solar masses in kg
 sigma_T = (6.652e-25)/(100.)**2 #thompson cross section in m^2
-k_b= 1.3806503e-23 #Blotsz const in m^2*kg*s^-2*K^-1
+k_b = 1.3806503e-23 #Blotsz const in m^2*kg*s^-2*K^-1
 c = 3.0e8 #speed of light in m*s^-1
-q= 1.60217646e-19 #unit of charge in joules equal to electron volt
+q = 1.60217646e-19 #unit of charge in joules equal to electron volt
 e_rm = ((m_e)*(c)**2)/((1000)*(q)) #rest mass energy of electron in KeV
 y_const = (sigma_T)/(e_rm) # compt. parameter constant
-G= 4.30117902e-9 # gravitational constant, km^2*Mpc*s^-2
+G = 4.30117902e-9 # gravitational constant, km^2*Mpc*s^-2
+h = 6.626066957e-34 #planck's constant kg*m^2*s^-1
 
 ###################################################################
 
@@ -51,6 +52,7 @@ gamma = 0.3081
 index = (beta - gamma) / alpha
 c500 = 1.177 #charcteristic concentration
 alpha_p = 0.12 #constant of correction see Arnaud (2010)
+cutoff  = 6. #radial range we intergrate out to
 
 ###################################################################
 
@@ -66,6 +68,10 @@ def E_FACT1(z):
 
 def ANG_DIAM_DIST(z):
     return (((c)/((72.)*(1000.)))*(scipy.integrate.romberg(E_FACT1, 0, z)))/(1+z)
+
+def FREQ(f, T=2.73): # Temperature (mean CMB temperature), T, in Kelvin and frequency, f, in GHz 
+    x = ((h)*((f)*(1.0e9)))/((k_b)*(2.73))
+    return (((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.))
 
 ##########################################    
 
@@ -127,6 +133,6 @@ def MAP(z, M500):
     cbar = plt.colorbar()
     cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
 
-    return Dim
+    return 
 
 ##############################################################

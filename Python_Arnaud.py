@@ -109,14 +109,14 @@ def E_FACT1(z):
 def ANG_DIAM_DIST(z):
     return (((c)/((72.)*(1000.)))*(scipy.integrate.romberg(E_FACT1, 0, z, divmax=20)))/(1+z)
 
-def FREQ(f, T): # Temperature in Kelvin and f in s^-1
-    x = ((h)*(f))/((k_b)*(T))
-    return ((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.)
+def FREQ(a): # Temperature (mean CMB temperature), T, in Kelvin and frequency, f, in GHz 
+    x = ((h)*((a)*(1.0e9)))/((k_b)*(2.73))
+    return (((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.))
 
 ###################################################################
 
 #Here we define the output function
-def PROFILE(z, M500):
+def PROFILE(z, M500, a):
     R500 = ((M500)/((4./3.)*(np.pi)*(500.)*(Rho_Crit(z))))**(1./3.)
     PNORM = (1.65e-3)*((E_FACT(z))**(8./3.))*((((hubble70)*(M500))/(3.0e14))**(2./3. + alpha_p))*((hubble70)**2.)*((8.403)/((hubble70)**(3./2.)))*(1.0e6)
     x = np.arange(0,(100.)*(cutoff)*(R500)/(100.), 0.01)
@@ -135,16 +135,17 @@ def PROFILE(z, M500):
     f = (y_const)*(q)*(PNORM)*(2.)*(mpc)
     r_over_r500 = (c)/((c500))*(R500)
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
-    dT_uK = (f)*(1.0e6)*(2.73)
-    plt.figure()
+    dT_uK = (1)*(f)*(1.0e6)*(2.73)*(FREQ(a))
+    #plt.figure()
     plt.plot(r_arcmin, dT_uK)
-    plt.text(5, 100 , r'$\mathrm{M_{500} =\/\ 4.5\ast 10^{14} \/\ M_{\odot}}$',fontsize=26)
-    plt.text(5, 25 , r'$\mathrm{Z =\/\ 0.22}$',fontsize=26)
+    #plt.text(5, 100 , r'$\mathrm{M_{500} =\/\ 4.5\ast 10^{14} \/\ M_{\odot}}$',fontsize=26)
+    #plt.text(5, 25 , r'$\mathrm{Z =\/\ 0.22}$',fontsize=26)
+    plt.legend((r'$\mathrm{M_{500} =\/\ 2.5\ast 10^{14} \/\ M_{\odot}}$',r'$\mathrm{M_{500} =\/\ 3.5\ast 10^{14} \/\ M_{\odot}}$',r'$\mathrm{M_{500} =\/\ 4.5\ast 10^{14} \/\ M_{\odot}}$'), 'upper right', shadow=False)
     plt.ylabel(r'$\mathrm{Temperature} \/\mathrm{Decrement}\/\mathrm{(\mu K)}$', fontsize=16)
     plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}$', fontsize=18)
     plt.yscale('log')
-    return r_arcmin[0], dT_uK[0]
+    return 
     
 
 
