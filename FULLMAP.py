@@ -197,8 +197,8 @@ def FULLMAP(n):
 #the other for postage stamp cluster image data and the final one for
 #the arrays to make final plots of temp as function of radial
     Cluster = np.zeros((n, 4))
-    TOTAL_IMG = np.zeros((n, 63,65))
-    TOTAL_PLT = np.zeros((n,2, 456))
+    TOTAL_IMG = np.zeros((n, 63,65)) #dimensions given later as: (n,len(A),le(A[0]))
+    TOTAL_PLT = np.zeros((n, 2, 456)) #dimensions given later as: len(AVG_R[AVG_R!=0])
 #Empty grid size set (SIZE*4 x SIZE*4 archmin, with .25archmin pixels)
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
@@ -303,8 +303,9 @@ def FULLMAP(n):
         plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
         plt.title(str(Cluster[q,2:4]))
         #plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}\/\mathrm{Scatter}$', fontsize=18)
-        plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0])
-        plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r')
+        plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0], label='Scatter')
+        plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+        plt.legend(loc='upper right', shadow=False)
 #Save postage clusters into one array
 #Save postage clusters radials and temperatures into one array
         TOTAL_IMG[q] = A

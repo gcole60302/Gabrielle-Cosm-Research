@@ -123,16 +123,26 @@ def MAP(z, M500):
     for i in range(2*Dim*4+1):
         for j in range(2*Dim*4+1):
             T_at_R[i,j] = interpol(DistR[i,j])
-
+#Plot full heatmap
     plt.figure() 
-    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
-    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=20)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=20)
     plt.imshow(T_at_R, interpolation='bicubic', origin='lower',vmin=0, vmax= np.max(T))
     plt.xticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
     plt.yticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
     cbar = plt.colorbar()
-    cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
-
+    cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=20)
+#Plot a zoom in on the heatmap
+    A1 = len(T_at_R[0])
+    A2 = len(T_at_R)
+    plt.figure() 
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=20)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=20)
+    plt.imshow(T_at_R[(A1/2)-16:(A1/2)+ 16,(A2/2)- 16:(A2/2)+ 16], interpolation='bicubic', origin='lower',vmin=0, vmax= np.max(T))
+    #plt.xticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
+    #plt.yticks(np.linspace(0, Dim*8+0,5), np.linspace(0, Dim*2,5))
+    cbar = plt.colorbar()
+    cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=20)
     return 
 
 ##############################################################

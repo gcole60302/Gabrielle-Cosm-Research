@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  5 JUN 2015 21:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  6 JUN 2015 14:55
 entering extended mode
 **MSProjectDraft.tex
 
@@ -1336,6 +1336,48 @@ LaTeX Warning: Label `subfig-2:dummy' multiply defined.
 LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
 
 
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
 LaTeX Warning: Label `subfig-2:dummy' multiply defined.
 
 
@@ -1472,34 +1514,34 @@ LaTeX Font Info:    Try loading font information for U+bbmtt on input line 112.
  (C:\Users\Gabrielle\AppData\Roaming\MiKTeX\2.9\tex\latex\bbm\ubbmtt.fd
 File: ubbmtt.fd 1999/03/15 V 1.2 Font definition for bbmss font - TH
 ) [4] [5] [6]
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22.pdf, id=36, 578.16
-pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22.pdf Graphic f
-ile (type pdf)
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf, id=36,
+ 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf Gr
+aphic file (type pdf)
 
-<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22.pdf>
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.22.pdf used on input line 173.
+_0.22_150GHz.pdf used on input line 173.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55.pdf, id=37, 578.16
-pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55.pdf Graphic f
-ile (type pdf)
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf, id=37,
+ 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf Gr
+aphic file (type pdf)
 
-<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55.pdf>
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.55.pdf used on input line 178.
+_0.55_150GHz.pdf used on input line 178.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00.pdf, id=38, 578.16
-pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00.pdf Graphic f
-ile (type pdf)
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf, id=38,
+ 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf Gr
+aphic file (type pdf)
 
-<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00.pdf>
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_1.00.pdf used on input line 183.
+_1.00_150GHz.pdf used on input line 183.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
 
@@ -1645,17 +1687,17 @@ File: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf Graphic file (type pdf)
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf used on
  input line 266.
 (pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
- [7] [8 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22.pdf> <C:/U
-sers/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55.pdf
+ [7] [8 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf
+> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
-ud_All_Masses_Z_0.55.pdf): PDF inclusion: multiple pdfs with page group include
-d in a single page
-> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00.pdf
+ud_All_Masses_Z_0.55_150GHz.pdf): PDF inclusion: multiple pdfs with page group 
+included in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
-ud_All_Masses_Z_1.00.pdf): PDF inclusion: multiple pdfs with page group include
-d in a single page
+ud_All_Masses_Z_1.00_150GHz.pdf): PDF inclusion: multiple pdfs with page group 
+included in a single page
 >] [9 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf> <
 C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf
 
@@ -1728,7 +1770,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  31042 strings out of 493921
- 730401 string characters out of 3147270
+ 730527 string characters out of 3147270
  977281 words of memory out of 3000000
  33808 multiletter control sequences out of 15000+200000
  13953 words of font info for 58 fonts, out of 3000000 for 9000
@@ -1750,7 +1792,7 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsy8.pfb>
-Output written on MSProjectDraft.pdf (11 pages, 835200 bytes).
+Output written on MSProjectDraft.pdf (11 pages, 835193 bytes).
 PDF statistics:
  1067 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
