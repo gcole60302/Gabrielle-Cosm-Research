@@ -179,6 +179,11 @@ def MAP(z, M500):
     plt.colorbar()
 
 ######################################
+#This function creates a white noise map of a specific deivation
+#it can be modified to depend on the mean and variantion, but remember
+#to also change it within the FULLMAP function
+#Noise is per pixel and pixels are quarter archmin scale
+#Noise is in units of microK
 def NMap():
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
@@ -310,7 +315,145 @@ def FULLMAP(n):
 #Save postage clusters radials and temperatures into one array
         TOTAL_IMG[q] = A
         TOTAL_PLT[q] = AVG_R[AVG_R!=0], AVG_T[AVG_T!=0]
-    return 
+
+    BIN1 = np.zeros((63,65))
+    BIN2 = np.zeros((63,65))
+    BIN3 = np.zeros((63,65))
+    BIN4 = np.zeros((63,65))
+    BIN5 = np.zeros((63,65))
+#We bin the data according to various features (Mass/Redshift, etc) to make the bined heat maps
+#2 is for redshift, 3 is for mass
+    for i in range(n):
+        if Cluster[i,3] >= 5e14:
+            BIN1 = BIN1 + TOTAL_IMG[i]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 5e14 and  Cluster[i,3] >= 4e14:
+            BIN2 = BIN2 + TOTAL_IMG[i]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 4e14 and  Cluster[i,3] >= 3e14:
+            BIN3 = BIN3 + TOTAL_IMG[i]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 3e14 and  Cluster[i,3] >= 2e14:
+            BIN4 = BIN4 + TOTAL_IMG[i]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 2e14:
+            BIN5 = BIN5 + TOTAL_IMG[i]
+        else:
+            continue
+#We plot all binned heat map data
+    plt.figure()
+    plt.title('Bin 1')
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(BIN1, interpolation= 'bicubic', origin='lower')
+
+    plt.figure()
+    plt.title('Bin 2')
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(BIN2, interpolation= 'bicubic', origin='lower')
+    
+    plt.figure()
+    plt.title('Bin 3')
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(BIN3, interpolation= 'bicubic', origin='lower')
+
+    plt.figure()
+    plt.title('Bin 4')
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(BIN4, interpolation= 'bicubic', origin='lower')
+
+    plt.figure()
+    plt.title('Bin 5')
+    plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
+    plt.imshow(BIN5, interpolation= 'bicubic', origin='lower')
+#Make plots of temperature vs. radial distance
+    BIN11 = np.zeros(len(TOTAL_PLT[0,1]))
+    BIN21 = np.zeros(len(TOTAL_PLT[0,1]))
+    BIN31 = np.zeros(len(TOTAL_PLT[0,1]))
+    BIN41 = np.zeros(len(TOTAL_PLT[0,1]))
+    BIN51 = np.zeros(len(TOTAL_PLT[0,1]))
+#We bin the data according to various features (Mass/Redshift, etc) to make the bined heat maps
+#2 is for redshift, 3 is for mass
+    for i in range(n):
+        if Cluster[i,3] >= 5e14:
+            BIN11 = BIN11 + TOTAL_PLT[i,1]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 5e14 and  Cluster[i,3] >= 4e14:
+            BIN21 = BIN21 + TOTAL_PLT[i,1]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 4e14 and  Cluster[i,3] >= 3e14:
+            BIN31 = BIN31 + TOTAL_PLT[i,1]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 3e14 and  Cluster[i,3] >= 2e14:
+            BIN41 = BIN41 + TOTAL_PLT[i,1]
+        else:
+            continue
+    for i in range(n):
+        if Cluster[i,3] <= 2e14:
+            BIN51 = BIN51 + TOTAL_PLT[i,1]
+        else:
+            continue
+#Plot the temperature vs. radial distance profiles
+    plt.figure()
+    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    plt.title('Bin 1')
+    plt.scatter(AVG_R[AVG_R!=0], BIN11, label='Scatter')
+    #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+    plt.legend(loc='upper right', shadow=False)
+
+    plt.figure()
+    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    plt.title('Bin 2')
+    plt.scatter(AVG_R[AVG_R!=0], BIN21, label='Scatter')
+    #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+    plt.legend(loc='upper right', shadow=False)
+
+    plt.figure()
+    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    plt.title('Bin 3')
+    plt.scatter(AVG_R[AVG_R!=0], BIN31, label='Scatter')
+    #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+    plt.legend(loc='upper right', shadow=False)
+
+    plt.figure()
+    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    plt.title('Bin 4')
+    plt.scatter(AVG_R[AVG_R!=0], BIN41, label='Scatter')
+    #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+    plt.legend(loc='upper right', shadow=False)
+
+    plt.figure()
+    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    plt.title('Bin 5')
+    plt.scatter(AVG_R[AVG_R!=0], BIN51, label='Scatter')
+    #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+    plt.legend(loc='upper right', shadow=False)
+
+    
+    return Cluster
 
 
 
