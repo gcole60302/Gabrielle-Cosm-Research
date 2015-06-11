@@ -452,6 +452,9 @@ def FULLMAP(n):
     #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
     plt.legend(loc='upper right', shadow=False)
 
+#Now we begin the calculation for the S/N ratio
+    
+
     
     return Cluster
 
