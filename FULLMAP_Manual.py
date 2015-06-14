@@ -295,7 +295,6 @@ def FULLMAP(n, M500, z, x, y):
         plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
         plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}\/\mathrm{Scatter}$', fontsize=18)
         plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0])
-        plt.plot(PROFILER(), PROFILET())
 #Save postage clusters into one array
 #Save postage clusters radials and temperatures into one array
         TOTAL_IMG[q] = A

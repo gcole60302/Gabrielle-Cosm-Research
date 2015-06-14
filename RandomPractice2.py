@@ -10,29 +10,28 @@ import scipy.optimize as opt
 from matplotlib.ticker import NullFormatter, MaxNLocator
 from numpy import linspace
 plt.ion()
-
 import numpy as np                                                                                                                                                                                                                                                             
 import pylab as plt                                                                                                                                                                                                                                                            
 import matplotlib.ticker as ticker                                                                                                                                                                                                                                             
+import matplotlib.pyplot as plt
+from scipy.interpolate import UnivariateSpline
+from scipy import interpolate
 
-# Generate data                                                                                                                                                                                                                                                                
-x = np.linspace(0, 2*np.pi*1e-9)                                                                                                                                                                                                                                               
-y = np.sin(x/1e-9)                                                                                                                                                                                                                                                             
+F_BIN1 = scipy.interpolate.interp1d(T_R_BIN1, T_T_BIN1, kind='cubic')
+    F_BIN2 = scipy.interpolate.interp1d(T_R_BIN2, T_T_BIN2, kind='cubic')
+    F_BIN3 = scipy.interpolate.interp1d(T_R_BIN3, T_T_BIN3, kind='cubic')
+    F_BIN4 = scipy.interpolate.interp1d(T_R_BIN4, T_T_BIN4, kind='cubic')
+    F_BIN5 = scipy.interpolate.interp1d(T_R_BIN5, T_T_BIN5, kind='cubic')
 
-# setup figures                                                                                                                                                                                                                                                                
-fig = plt.figure()                                                                                                                                                                                                                                                             
-ax1 = fig.add_subplot(121)                                                                                                                                                                                                                                                     
-ax2 = fig.add_subplot(122)                                                                                                                                                                                                                                                     
-# plot two identical plots                                                                                                                                                                                                                                                     
-ax1.plot(x, y)                                                                                                                                                                                                                                                                 
-ax2.plot(x, y)                                                                                                                                                                                                                                                                 
+    SN_BIN1 = np.zeros((5, len(AVG_R[AVG_R!=0])))
+    R_Stand = AVG_R[AVG_R!=0]
 
-# Change only ax2                                                                                                                                                                                                                                                              
-scale = 1e-9                                                                                                                                                                                                                                                                   
-ticks = ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/scale))                                                                                                                                                                                                           
-ax2.xaxis.set_major_formatter(ticks)                                                                                                                                                                                                                                           
+    for i in range(len(R_Stand)):
+        SN_BIN1[i] = (F_BIN1(R_Stand[i]))/ (np.sqrt(BIN11[i] - F_BIN1(R_Stand[i])))
 
-ax1.set_xlabel("meters")                                                                                                                                                                                                                                                       
-ax2.set_xlabel("nanometers")                                                                                                                                                                                                                                                   
+    for i in range(len(R_Stand)):
+        SN_BIN1[i] = (F_BIN2(R_Stand[i]))/ (np.sqrt(BIN21[i] - F_BIN1(R_Stand[i])))
 
-plt.show()
+    for i in range(len(R_Stand)):
+        SN_BIN1[i] = (F_BIN2(R_Stand[i]))/ (np.sqrt(BIN31[i] - F_BIN1(R_Stand[i])))
+

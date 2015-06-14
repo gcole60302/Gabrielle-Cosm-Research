@@ -145,7 +145,7 @@ def PROFILE(z, M500, a):
     plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}$', fontsize=18)
     plt.yscale('log')
-    return 
+    return len(r_arcmin)
     
 
 
