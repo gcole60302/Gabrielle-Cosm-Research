@@ -75,9 +75,10 @@ def FREQ(f): # Temperature (mean CMB temperature), T, in Kelvin and frequency, f
     x = ((h)*((f)*(1.0e9)))/((k_b)*(2.73))
     return (((x)*((np.exp(x) + 1.)/(np.exp(x) - 1.)) - 4.))
 
+
 ###################################################################
 #Here we define the output function
-def PROFILET(z, M500):
+def PROFILET(z, M500,a):
     R500 = ((M500)/((2500./3.)*(np.pi)*(Rho_Crit(z))))**(1./3.)
     x = np.arange(0,(100.)*(cutoff)*(R500)/(100.), 0.01)
     q = np.zeros(len(x))
@@ -97,11 +98,11 @@ def PROFILET(z, M500):
     r_over_r500= (c)/((c500))*(R500)
     absy_150ghz = f
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
-    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
+    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)*(-1)*((FREQ(a)))
     return dT_uK
 
 ##########################################
-def PROFILER(z, M500):
+def PROFILER(z, M500,a):
     R500 = ((M500)/((2500./3.)*(np.pi)*(Rho_Crit(z))))**(1./3.)
     x = np.arange(0,(100.)*(cutoff)*(R500)/(100.), 0.01)
     q = np.zeros(len(x))
@@ -121,7 +122,7 @@ def PROFILER(z, M500):
     r_over_r500= (c)/((c500))*(R500)
     absy_150ghz = f
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
-    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)
+    dT_uK = (absy_150ghz)*(1.0e6)*(2.73)*(-1)*((FREQ(a)))
     return r_arcmin
 
 ##########################################    
@@ -193,8 +194,6 @@ def FULLMAP(n):
 #the other for postage stamp cluster image data and the final one for
 #the arrays to make final plots of temp as function of radial
     Cluster = np.zeros((n, 4))
-    TOTAL_IMG = np.zeros((n, 63,65)) #dimensions given later as: (n,len(A),le(A[0]))
-    TOTAL_PLT = np.zeros((n, 2, 456)) #dimensions given later as: len(AVG_R[AVG_R!=0])
 #Empty grid size set (SIZE*4 x SIZE*4 archmin, with .25archmin pixels)
     SIZE = 405
     vects = np.linspace(0,SIZE, SIZE*4+1)
@@ -215,8 +214,8 @@ def FULLMAP(n):
         z = np.arange(0.2,1.2,.1)
         Z = np.random.choice(z,1)[0]
         M500 = np.abs(np.random.normal(3.5e14, 1.0e14, 1)[0])
-        R = PROFILER(Z,M500)
-        T = (1)*PROFILET(Z,M500)
+        R = PROFILER(Z,M500, 150)
+        T = (1)*PROFILET(Z,M500, 150)
         Cluster[k] = CentClusIndexA, CentClusIndexB, Z, M500
         print Z, M500
 #Shape of smaller plot
@@ -240,25 +239,30 @@ def FULLMAP(n):
     SUM=SUM
     #plt.figure()
     #plt.imshow(SUM +NMap(),interpolation= 'bicubic', origin='lower')
-    #plt.title('var 18')
-    #plt.colorbar()
+    #plt.title('Full Sky Map', fontsize=20)
+    #plt.xlabel(r'$\mathrm{Quarter}\/\mathrm{Arcmin}$', fontsize=20)
+    #plt.ylabel(r'$\mathrm{Quarter}\/\mathrm{Arcmin}$', fontsize=20)
+    #cbar = plt.colorbar()
+    #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=20)
     #plt.show()
     T = SUM +NMap()
 #Make cut outs around each cluster in the map
+    S = T[Cluster[0,0]-31:Cluster[0,0]+32,Cluster[0,1]-32:Cluster[0,1]+33]
+    SIZE1 = len(S[0])
+    SIZE2 = len(S)
+    TOTAL_PLT = np.zeros((n, 2, 457))#last number is the length of AVG_R[AVG_R!=0] 749 for 4, 1108 for 5 and 457 for 3 and 1530 for 6
+    TOTAL_IMG = np.zeros((n, SIZE2, SIZE1))
     for q in range(n):
         A = T[Cluster[q,0]-31:Cluster[q,0]+32,Cluster[q,1]-32:Cluster[q,1]+33]
         #plt.figure()
-        #plt.imshow(A, interpolation= 'bicubic', origin='lower')
-        #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
-        #plt.ylabel(r'$\mathrm{Arcmin}$',fontsize=16)
-        #plt.title(str(Cluster[q,2:4]))
-        #plt.grid()
+        #plt.imshow(A,interpolation= 'bicubic', origin='lower')
+        #plt.ylabel(r'$\mathrm{Quarter}\/\mathrm{Arcmin}$', fontsize=20)
+        #plt.xlabel(r'$\mathrm{Quarter}\/\mathrm{Arcmin}$', fontsize=20)
+        #plt.title(str(Cluster[q,2:4]), fontsize=20)
         #cbar = plt.colorbar()
-        #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
+        #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=20)
         #plt.show()
 #Make equal size grid to calculate radial distances again in archmin with quarter archmin pixels
-        SIZE1 = len(A[0])
-        SIZE2 = len(A)
         vects1 = np.linspace(0,SIZE1, SIZE1*4+1)
         x1,y1 = np.meshgrid(vects1, vects1)
         DIST = np.zeros((SIZE2,SIZE1))
@@ -277,40 +281,51 @@ def FULLMAP(n):
         AVG_R = np.zeros(SIZE1*SIZE2)
 #Turn DIST and A into a joint two colunm array
         for i in range(SIZE1*SIZE2):
-            R_T[i,0] = LIST1[i]
-            R_T[i,1] = LIST2[i]
+            R_T[i,0] = LIST1[i] #Radial distances
+            R_T[i,1] = LIST2[i] #Temps
 #Create array of all temperature values associated with a given radial range
         for i in range(SIZE1*SIZE2):
-            t = R_T[i,0]
-            AVG_R[i] = t
+            r = R_T[i,0]
+            AVG_R[i] = r
             for j in range(SIZE1*SIZE2):
-                if R_T[j,0] == t and R_T[j,0]!= 0:
+                if R_T[j,0] == r and R_T[j,0]!= -1.:
                     AVG_R_T[i,j] = R_T[j,1]
-                    R_T[j,0] = 0
+                    R_T[j,0] = -1.
                 else:
                     continue
 #Average all values in a given radial range
         for i in range(SIZE1*SIZE2):
             AVG_T[i] = ARRAY_AVG(AVG_R_T[i])
+        CUT_R = np.delete(AVG_R[AVG_R!=-1.],-1)
+        CUT_T = np.delete(AVG_T[AVG_T!=0], -1)
+        BINNED_R = CUT_R.reshape((38,12)).mean(axis=1) #reshape must muliply to equal to the third dimension of TOTAL_PLT -1
+        BINNED_T = CUT_T.reshape((38,12)).mean(axis=1) #reshape must muliply to equal to the third dimension of TOTAL_PLT -1
+        plt.figure()
+        plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=20)
+        plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=20)
+        plt.title(str(Cluster[q,2:4]), fontsize=22)
+        plt.scatter(BINNED_R, BINNED_T, label='Scatter')
+        plt.plot(PROFILER(Cluster[q,2], Cluster[q,3], 150), PROFILET(Cluster[q,2], Cluster[q,3], 150), 'r', label='Arnaud Profile')
+        plt.legend(loc='upper right', shadow=False)
 #Plot averaged temperatures as a function of radial distances
         #plt.figure()
-        #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
-        #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
-        #plt.title(str(Cluster[q,2:4]))
-        ##plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}\/\mathrm{Scatter}$', fontsize=18)
-        #plt.scatter(AVG_R[AVG_R!=0], AVG_T[AVG_T!=0], label='Scatter')
-        #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3]), PROFILET(Cluster[q,2], Cluster[q,3]), 'r', label='Arnaud Profile')
+        #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=20)
+        #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=20)
+        #plt.title(str(Cluster[q,2:4]), fontsize=22)
+        #plt.scatter(AVG_R[AVG_R!=-1.], AVG_T[AVG_T!=0], label='Scatter')
+        #plt.plot(PROFILER(Cluster[q,2], Cluster[q,3], 150), PROFILET(Cluster[q,2], Cluster[q,3], 150), 'r', label='Arnaud Profile')
         #plt.legend(loc='upper right', shadow=False)
-#Save postage clusters into one array
-#Save postage clusters radials and temperatures into one array
+#Save the postage size image data for each reapective cluster into one array
+#Save postage clusters radial arrays and temperatures arrays into one array for each respective cluster
         TOTAL_IMG[q] = A
-        TOTAL_PLT[q] = AVG_R[AVG_R!=0], AVG_T[AVG_T!=0]
+        TOTAL_PLT[q] = AVG_T[AVG_T !=0.], AVG_T[AVG_T !=0.]
 #################################################
-    BIN1 = np.zeros((63,65))
-    BIN2 = np.zeros((63,65))
-    BIN3 = np.zeros((63,65))
-    BIN4 = np.zeros((63,65))
-    BIN5 = np.zeros((63,65))
+#Create some empty arrays to begin the binning process
+    BIN1 = np.zeros((SIZE2,SIZE1))
+    BIN2 = np.zeros((SIZE2,SIZE1))
+    BIN3 = np.zeros((SIZE2,SIZE1))
+    BIN4 = np.zeros((SIZE2,SIZE1))
+    BIN5 = np.zeros((SIZE2,SIZE1))
 #We bin the data according to various features (Mass/Redshift, etc) to make the bined heat maps
 #2 is for redshift, 3 is for mass
     for i in range(n):
@@ -326,6 +341,7 @@ def FULLMAP(n):
             BIN5 += TOTAL_IMG[i]
 
 #We plot all binned heat map data
+#Bin 1 plot
     #plt.figure()
     #plt.title('Bin 1')
     #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
@@ -333,7 +349,7 @@ def FULLMAP(n):
     #plt.imshow(BIN1, interpolation= 'bicubic', origin='lower')
     #cbar = plt.colorbar()
     #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
-
+#Bin 2 plot
     #plt.figure()
     #plt.title('Bin 2')
     #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
@@ -341,7 +357,7 @@ def FULLMAP(n):
     #plt.imshow(BIN2, interpolation= 'bicubic', origin='lower')
     #cbar = plt.colorbar()
     #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
-    
+#Bin 3 plot    
     #plt.figure()
     #plt.title('Bin 3')
     #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
@@ -349,7 +365,7 @@ def FULLMAP(n):
     #plt.imshow(BIN3, interpolation= 'bicubic', origin='lower')
     #cbar = plt.colorbar()
     #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
-
+#Bin 4 plot
     #plt.figure()
     #plt.title('Bin 4')
     #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
@@ -357,7 +373,7 @@ def FULLMAP(n):
     #plt.imshow(BIN4, interpolation= 'bicubic', origin='lower')
     #cbar = plt.colorbar()
     #cbar.set_label(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$',fontsize=16)
-
+#Bin 5 plot
     #plt.figure()
     #plt.title('Bin 5')
     #plt.xlabel(r'$\mathrm{Arcmin}$',fontsize=16)
@@ -376,87 +392,88 @@ def FULLMAP(n):
     for i in range(n):
         if Cluster[i,3] >= 5e14:
             BIN11 += TOTAL_PLT[i,1]
-        if Cluster[i,3] <= 5e14 and  Cluster[i,3] >= 4e14:
+        if Cluster[i,3] < 5e14 and  Cluster[i,3] >= 4e14:
             BIN21 += TOTAL_PLT[i,1]
-        if Cluster[i,3] <= 4e14 and  Cluster[i,3] >= 3e14:
+        if Cluster[i,3] < 4e14 and  Cluster[i,3] >= 3e14:
             BIN31 += TOTAL_PLT[i,1]
-        if Cluster[i,3] <= 3e14 and  Cluster[i,3] >= 2e14:
+        if Cluster[i,3] < 3e14 and  Cluster[i,3] >= 2e14:
             BIN41 += TOTAL_PLT[i,1]
-        if Cluster[i,3] <= 2e14:
+        if Cluster[i,3] < 2e14:
             BIN51 += TOTAL_PLT[i,1]
-
-#Plot the temperature vs. radial distance profiles
+#############Plot the temperature vs. radial distance profiles########################
 #Plot Bin 1
     #plt.figure()
     #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
     #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     #plt.title('Bin 1')
-    #plt.scatter(AVG_R[AVG_R!=0], BIN11, label='Scatter')
+    #plt.scatter(AVG_R[AVG_R!=-1.], BIN11, label='Scatter')
     #plt.legend(loc='upper right', shadow=False)
 #Plot Bin 2
     #plt.figure()
     #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
     #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     #plt.title('Bin 2')
-    #plt.scatter(AVG_R[AVG_R!=0], BIN21, label='Scatter')
+    #plt.scatter(AVG_R[AVG_R!=-1.], BIN21, label='Scatter')
     #plt.legend(loc='upper right', shadow=False)
 #Plot Bin 3
-    plt.figure()
-    plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
-    plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
-    plt.title('Bin 3')
-    plt.scatter(AVG_R[AVG_R!=0], BIN31, label='Scatter')
-    plt.legend(loc='upper right', shadow=False)
+    #plt.figure()
+    #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
+    #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
+    #plt.title('Bin 3')
+    #plt.scatter(AVG_R[AVG_R!=-1.], BIN31, label='Scatter')
+    #plt.legend(loc='upper right', shadow=False)
 #Plot Bin 4
     #plt.figure()
     #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
     #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     #plt.title('Bin 4')
-    #plt.scatter(AVG_R[AVG_R!=0], BIN41, label='Scatter')
+    #plt.scatter(AVG_R[AVG_R!=-1.], BIN41, label='Scatter')
     #plt.legend(loc='upper right', shadow=False)
 #Plot Bin 5
     #plt.figure()
     #plt.ylabel(r'$\mathrm{Temperature}\/\mathrm{(\mu K)}$', fontsize=16)
     #plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
     #plt.title('Bin 5')
-    #plt.scatter(AVG_R[AVG_R!=0], BIN51, label='Scatter')
+    #plt.scatter(AVG_R[AVG_R!=-1.], BIN51, label='Scatter')
     #plt.legend(loc='upper right', shadow=False)
 
 #Now we begin the calculation for the S/N ratio
-    Radial_1 = np.zeros((n, 700))
-    Temp_1 = np.zeros((n, 700))
-    Radial_2 = np.zeros((n, 700))
-    Temp_2 = np.zeros((n, 700))
-    Radial_3 = np.zeros((n, 700))
-    Temp_3 = np.zeros((n, 700))
-    Radial_4 = np.zeros((n, 700))
-    Temp_4 = np.zeros((n, 700))
-    Radial_5 = np.zeros((n, 700))
-    Temp_5 = np.zeros((n, 700))
+    Radial_1 = np.zeros((n, 750))
+    Temp_1 = np.zeros((n, 750))
+    Radial_2 = np.zeros((n, 750))
+    Temp_2 = np.zeros((n, 750))
+    Radial_3 = np.zeros((n, 750))
+    Temp_3 = np.zeros((n, 750))
+    Radial_4 = np.zeros((n, 750))
+    Temp_4 = np.zeros((n, 750))
+    Radial_5 = np.zeros((n, 750))
+    Temp_5 = np.zeros((n, 750))
 ####################
+#First we create the expected stacked Araud Profiles
+    #We bin according to mass. For each cluster in a bin we create its appropriate Arand Profile
     for i in range(n):
         if Cluster[i,3] >= 5e14:
-            a = len(PROFILER(Cluster[i,2], Cluster[i,3]))
-            Radial_1[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3])
-            Temp_1[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3])
-        if Cluster[i,3] <= 5e14 and  Cluster[i,3] >= 4e14:
-            a = len(PROFILER(Cluster[i,2], Cluster[i,3]))
-            Radial_2[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3])
-            Temp_2[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3])
-        if Cluster[i,3] <= 4e14 and  Cluster[i,3] >= 3e14:
-            a = len(PROFILER(Cluster[i,2], Cluster[i,3]))
-            Radial_3[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3])
-            Temp_3[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3])
-        if Cluster[i,3] <= 3e14 and  Cluster[i,3] >= 2e14:
-            a = len(PROFILER(Cluster[i,2], Cluster[i,3]))
-            Radial_4[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3])
-            Temp_4[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3])
-        if Cluster[i,3] <= 2e14:
-            a = len(PROFILER(Cluster[i,2], Cluster[i,3]))
-            Radial_5[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3])
-            Temp_5[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3])
-
-#############################
+            a = len(PROFILER(Cluster[i,2], Cluster[i,3], 150))
+            Radial_1[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3], 150)
+            Temp_1[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3], 150)
+        if Cluster[i,3] < 5e14 and  Cluster[i,3] >= 4e14:
+            a = len(PROFILER(Cluster[i,2], Cluster[i,3], 150))
+            Radial_2[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3], 150)
+            Temp_2[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3], 150)
+        if Cluster[i,3] < 4e14 and  Cluster[i,3] >= 3e14:
+            a = len(PROFILER(Cluster[i,2], Cluster[i,3], 150))
+            Radial_3[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3], 150)
+            Temp_3[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3], 150)
+        if Cluster[i,3] < 3e14 and  Cluster[i,3] >= 2e14:
+            a = len(PROFILER(Cluster[i,2], Cluster[i,3], 150))
+            Radial_4[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3], 150)
+            Temp_4[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3], 150)
+        if Cluster[i,3] < 2e14:
+            a = len(PROFILER(Cluster[i,2], Cluster[i,3], 150))
+            Radial_5[i,0:a] = PROFILER(Cluster[i,2], Cluster[i,3], 150)
+            Temp_5[i,0:a] = PROFILET(Cluster[i,2], Cluster[i,3], 150)
+#In each bin we take the Profile with the longest radial value and trimming any remaining zeros
+#we create True_Radial_Bini and True_Temperature_Bini arrays
     T_R_BIN1 = np.trim_zeros(Radial_1.max(axis=0), 'b')
     T_T_BIN1 = np.zeros((n, len(T_R_BIN1)))
 
@@ -471,77 +488,125 @@ def FULLMAP(n):
 
     T_R_BIN5 = np.trim_zeros(Radial_5.max(axis=0), 'b')
     T_T_BIN5 = np.zeros((n, len(T_R_BIN5)))
-################################# 
+#For each cluster in a given bin we interpolate the temp values at the radial values determined by
+#the longest extending cluster in the given bin.We save these interpolated values to an array
     for i in range(n):
         if Cluster[i,3] >= 5e14:
-            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3]), PROFILET(Cluster[i,2], Cluster[i,3]),kind='cubic', bounds_error=False, fill_value=0.)
+            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3], 150), PROFILET(Cluster[i,2], Cluster[i,3], 150),kind='cubic', bounds_error=False, fill_value=0.)
             T_T_BIN1[i,1:] = interpol(T_R_BIN1[1:])
-        if Cluster[i,3] <= 5e14 and  Cluster[i,3] >= 4e14:
-            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3]), PROFILET(Cluster[i,2], Cluster[i,3]),kind='cubic', bounds_error=False, fill_value=0.)
+        if Cluster[i,3] < 5e14 and  Cluster[i,3] >= 4e14:
+            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3], 150), PROFILET(Cluster[i,2], Cluster[i,3], 150),kind='cubic', bounds_error=False, fill_value=0.)
             T_T_BIN2[i,1:] = interpol(T_R_BIN2[1:])
-        if Cluster[i,3] <= 4e14 and  Cluster[i,3] >= 3e14:
-            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3]), PROFILET(Cluster[i,2], Cluster[i,3]),kind='cubic', bounds_error=False, fill_value=0.)
+        if Cluster[i,3] < 4e14 and  Cluster[i,3] >= 3e14:
+            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3], 150), PROFILET(Cluster[i,2], Cluster[i,3], 150),kind='cubic', bounds_error=False, fill_value=0.)
             T_T_BIN3[i,1:] = interpol(T_R_BIN3[1:])
-        if Cluster[i,3] <= 3e14 and  Cluster[i,3] >= 2e14:
-            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3]), PROFILET(Cluster[i,2], Cluster[i,3]),kind='cubic', bounds_error=False, fill_value=0.)
+        if Cluster[i,3] < 3e14 and  Cluster[i,3] >= 2e14:
+            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3], 150), PROFILET(Cluster[i,2], Cluster[i,3], 150),kind='cubic', bounds_error=False, fill_value=0.)
             T_T_BIN4[i,1:] = interpol(T_R_BIN4[1:])
-        if Cluster[i,3] <= 2e14:
-            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3]), PROFILET(Cluster[i,2], Cluster[i,3]),kind='cubic', bounds_error=False, fill_value=0.)
+        if Cluster[i,3] < 2e14:
+            interpol = scipy.interpolate.interp1d(PROFILER(Cluster[i,2], Cluster[i,3], 150), PROFILET(Cluster[i,2], Cluster[i,3], 150),kind='cubic', bounds_error=False, fill_value=0.)
             T_T_BIN5[i,1:] = interpol(T_R_BIN5[1:])
-##################################
+#We sum the temp arrays within each given mass bin
     T_T_BIN1 = T_T_BIN1.sum(axis=0)
     T_T_BIN2 = T_T_BIN2.sum(axis=0)
     T_T_BIN3 = T_T_BIN3.sum(axis=0)
     T_T_BIN4 = T_T_BIN4.sum(axis=0)
     T_T_BIN5 = T_T_BIN5.sum(axis=0)
+#We create functions that allow us to interpolate values from our binned stacked expected (Based on the Arnaud) Profile
+    #F_BIN1 = scipy.interpolate.interp1d(T_R_BIN1, T_T_BIN1, kind= 'cubic', bounds_error=False, fill_value=0.)
+    #F_BIN2 = scipy.interpolate.interp1d(T_R_BIN2, T_T_BIN2, kind= 'cubic', bounds_error=False, fill_value=0.)
+    #F_BIN3 = scipy.interpolate.interp1d(T_R_BIN3, T_T_BIN3, kind= 'cubic', bounds_error=False, fill_value=0.)
+    #F_BIN4 = scipy.interpolate.interp1d(T_R_BIN4, T_T_BIN4, kind= 'cubic', bounds_error=False, fill_value=0.)
+    #F_BIN5 = scipy.interpolate.interp1d(T_R_BIN5, T_T_BIN5, kind= 'cubic', bounds_error=False, fill_value=0.)
+#We create an empty array to populate with our SNR ratio measurments
+#We save AVG_R[AVG_R!=-1.] into a more intutive form as Radial_Standard --> R_Stand. Since it is constant and based on the
+#radial distances meshgrid
+    SN_ALL_BIN = np.zeros((5, len(AVG_R[AVG_R!=-1.])))
+    R_Stand = AVG_R[AVG_R!=-1.]
+
 #################################
-    F_BIN1 = scipy.interpolate.interp1d(T_R_BIN1, T_T_BIN1, kind= 'cubic', bounds_error=False, fill_value=0.)
-    F_BIN2 = scipy.interpolate.interp1d(T_R_BIN2, T_T_BIN2, kind= 'cubic', bounds_error=False, fill_value=0.)
-    F_BIN3 = scipy.interpolate.interp1d(T_R_BIN3, T_T_BIN3, kind= 'cubic', bounds_error=False, fill_value=0.)
-    F_BIN4 = scipy.interpolate.interp1d(T_R_BIN4, T_T_BIN4, kind= 'cubic', bounds_error=False, fill_value=0.)
-    F_BIN5 = scipy.interpolate.interp1d(T_R_BIN5, T_T_BIN5, kind= 'cubic', bounds_error=False, fill_value=0.)
-
-    SN_ALL_BIN = np.zeros((5, len(AVG_R[AVG_R!=0])))
-    R_Stand = AVG_R[AVG_R!=0]
-
 #SN_ALL_BIN is an array of the S/N ratio of the clusters in a specific bin
-    for i in range(len(R_Stand)):
-        SN_ALL_BIN[0,i] = (F_BIN1(R_Stand[i]))/ (np.sqrt((BIN11[i] - F_BIN1(R_Stand[i]))**2.))
-        SN_ALL_BIN[1,i] = (F_BIN2(R_Stand[i]))/ (np.sqrt((BIN21[i] - F_BIN2(R_Stand[i]))**2.))
-        SN_ALL_BIN[2,i] = (F_BIN3(R_Stand[i]))/ (np.sqrt((BIN31[i] - F_BIN3(R_Stand[i]))**2.))
-        SN_ALL_BIN[3,i] = (F_BIN4(R_Stand[i]))/ (np.sqrt((BIN41[i] - F_BIN4(R_Stand[i]))**2.))
-        SN_ALL_BIN[4,i] = (F_BIN5(R_Stand[i]))/ (np.sqrt((BIN51[i] - F_BIN5(R_Stand[i]))**2.))
+    #for i in range(len(R_Stand)):
+        #SN_ALL_BIN[0,i] = (F_BIN1(R_Stand[i]))/ (np.sqrt((BIN11[i] - F_BIN1(R_Stand[i]))**2.))
+        #SN_ALL_BIN[1,i] = (F_BIN2(R_Stand[i]))/ (np.sqrt((BIN21[i] - F_BIN2(R_Stand[i]))**2.))
+        #SN_ALL_BIN[2,i] = (F_BIN3(R_Stand[i]))/ (np.sqrt((BIN31[i] - F_BIN3(R_Stand[i]))**2.))
+        #SN_ALL_BIN[3,i] = (F_BIN4(R_Stand[i]))/ (np.sqrt((BIN41[i] - F_BIN4(R_Stand[i]))**2.))
+        #SN_ALL_BIN[4,i] = (F_BIN5(R_Stand[i]))/ (np.sqrt((BIN51[i] - F_BIN5(R_Stand[i]))**2.))
+#Plot Bin 1 SNR
+    #plt.figure()
+    #plt.title('Bin 1')
+    #plt.xlabel('Radial Distance')
+    #plt.ylabel('S/N')
+    #plt.scatter(R_Stand,SN_ALL_BIN[0])
+#Plot Bin 2 SNR
+    #plt.figure()
+    #plt.title('Bin 2')
+    #plt.xlabel('Radial Distance')
+    #plt.ylabel('S/N')
+    #plt.scatter(R_Stand,SN_ALL_BIN[1])
+#Plot Bin 3 SNR
+    #plt.figure()
+    #plt.title('Bin 3')
+    #plt.xlabel('Radial Distance')
+    #plt.ylabel('S/N')
+    #plt.scatter(R_Stand,SN_ALL_BIN[2])
+#Plot Bin 4 SNR
+    #plt.figure()
+    #plt.title('Bin 4')
+    #plt.xlabel('Radial Distance')
+    #plt.ylabel('S/N')
+    #plt.scatter(R_Stand,SN_ALL_BIN[3])
+#Plot Bin 5 SNR
+    #plt.figure()
+    #plt.title('Bin 5')
+    #plt.xlabel('Radial Distance')
+    #plt.ylabel('S/N')
+    #plt.scatter(R_Stand,SN_ALL_BIN[4])
 
-    plt.figure()
-    plt.title('Bin 1')
-    plt.scatter(R_Stand,SN_ALL_BIN[0])
-
-    plt.figure()
-    plt.title('Bin 2')
-    plt.scatter(R_Stand,SN_ALL_BIN[1])
-
-    plt.figure()
-    plt.title('Bin 3')
-    plt.scatter(R_Stand,SN_ALL_BIN[2])
-
-    plt.figure()
-    plt.title('Bin 4')
-    plt.scatter(R_Stand,SN_ALL_BIN[3])
-
-    plt.figure()
-    plt.title('Bin 5')
-    plt.scatter(R_Stand,SN_ALL_BIN[4])
-
-
+    print "Number of Clusters in Bin 1:", np.where(Cluster >5e14, 1,0).sum()
+    print "Number of Clusters in BIN 2:", np.where(Cluster >=4e14, 1,0).sum() - np.where(Cluster >5e14, 1,0).sum()
+    print "Number of Clusters in BIN 3:", np.where(Cluster >=3e14, 1,0).sum() - np.where(Cluster >=4e14, 1,0).sum()
+    print "Number of Clusters in BIN 4:", np.where(Cluster >=2e14, 1,0).sum() - np.where(Cluster >=3e14, 1,0).sum()
+    print "Number of Clusters in BIN 5:", n - np.where(Cluster >=2e14, 1,0).sum() #n is the number of clusters imputted 
     return 
 
+#With SN_ALL_BIN we can run multiple simulations and then plot them together
+#n is the number of simulations and c is the number of clusters in each simulation
+def SN(num,c):
+    R_Stand = FULLMAP(c)[2]
+    lenght = FULLMAP(c)[1]
+    SN = np.zeros((num, 5, lenght)) #len(AVG_R[AVG_R!=0]
+    for i in range(num):
+        SN[i] = FULLMAP(c)[0]
 
+    plt.figure()
+    plt.title('')
+    plt.xlabel('Radial Distance')
+    plt.ylabel('S/N')
+    plt.scatter(R_Stand, SN[0])
 
+    plt.figure()
+    plt.title('')
+    plt.xlabel('Radial Distance')
+    plt.ylabel('S/N')
+    plt.scatter(R_Stand, SN[1])
 
+    plt.figure()
+    plt.title('')
+    plt.xlabel('Radial Distance')
+    plt.ylabel('S/N')
+    plt.scatter(R_Stand, SN[2])
 
-
-
-
-
-
+    plt.figure()
+    plt.title('')
+    plt.xlabel('Radial Distance')
+    plt.ylabel('S/N')
+    plt.scatter(R_Stand, SN[3])
+    
+    plt.figure()
+    plt.title('')
+    plt.xlabel('Radial Distance')
+    plt.ylabel('S/N')
+    plt.scatter(R_Stand, SN[4])
+    return
     

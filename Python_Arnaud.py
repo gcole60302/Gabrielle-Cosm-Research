@@ -136,16 +136,16 @@ def PROFILE(z, M500, a):
     r_over_r500 = (c)/((c500))*(R500)
     r_arcmin =(r_over_r500)/(ANG_DIAM_DIST(z))*(180.)/(np.pi)*(60.)
     dT_uK = (-1)*(f)*(1.0e6)*(2.73)*(FREQ(a))
-    #plt.figure()
+    plt.figure()
     plt.plot(r_arcmin, dT_uK)
     #plt.text(5, 100 , r'$\mathrm{M_{500} =\/\ 4.5\ast 10^{14} \/\ M_{\odot}}$',fontsize=26)
     #plt.text(5, 25 , r'$\mathrm{Z =\/\ 0.22}$',fontsize=26)
     plt.legend((r'$\mathrm{M_{500} =\/\ 2.5\ast 10^{14} \/\ M_{\odot}}$',r'$\mathrm{M_{500} =\/\ 3.5\ast 10^{14} \/\ M_{\odot}}$',r'$\mathrm{M_{500} =\/\ 4.5\ast 10^{14} \/\ M_{\odot}}$'), 'upper right', shadow=False)
-    plt.ylabel(r'$\mathrm{Temperature} \/\mathrm{Decrement}\/\mathrm{(\mu K)}$', fontsize=16)
+    plt.ylabel(r'$\mathrm{Comptonization,}\/\mathrm{y}\/\mathrm{(\mu K)}$', fontsize=16)
     plt.xlabel(r'$\mathrm{Radial}\/\mathrm{Distance}\/\mathrm{(Arcmin)}$', fontsize=16)
-    plt.title(r'$\mathrm{Intergrated}\/\mathrm{Compton}\/\mathrm{Parameter}\/\mathrm{Decrement}$', fontsize=18)
+    plt.title(r'$\mathrm{Compton}\/\mathrm{Parameter}$', fontsize=18)
     plt.yscale('log')
-    return len(r_arcmin)
+    return 
     
 
 

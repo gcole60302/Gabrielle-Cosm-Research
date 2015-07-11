@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  6 JUN 2015 14:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  25 JUN 2015 18:04
 entering extended mode
 **MSProjectDraft.tex
 
@@ -1318,10 +1318,178 @@ LaTeX Warning: Label `subfig-2:dummy' multiply defined.
 LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
 
 
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
 LaTeX Warning: Label `subfig-1:dummy' multiply defined.
 
 
 LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
 
 
 LaTeX Warning: Label `subfig-2:dummy' multiply defined.
@@ -1378,43 +1546,100 @@ LaTeX Warning: Label `subfig-2:dummy' multiply defined.
 LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
 
 
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `subfig-2:dummy' multiply defined.
-
-
-LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
-
-
 LaTeX Warning: Label `fig:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-1:dummy' multiply defined.
+
+
+LaTeX Warning: Label `subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `sub@subfig-2:dummy' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
@@ -1503,224 +1728,285 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {C:/Users/Gabrielle/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (4.73404pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/12 Navarro-Frenk-White (GNFW) pro-file, but are de-tected through 
-the ther-mal Sunyaev-
+[2] [3] [4]
+Overfull \hbox (11.91869pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/12 Frenk-White (GNFW) pro-file, but are de-tected through the ther
+-mal Sunyaev-Zel'dovich
  []
 
-[2] [3]
-LaTeX Font Info:    Try loading font information for U+bbmtt on input line 112.
+[5] [6]
+LaTeX Font Info:    Try loading font information for U+bbmtt on input line 126.
 
  (C:\Users\Gabrielle\AppData\Roaming\MiKTeX\2.9\tex\latex\bbm\ubbmtt.fd
 File: ubbmtt.fd 1999/03/15 V 1.2 Font definition for bbmss font - TH
-) [4] [5] [6]
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf, id=36,
+) [7] [8] [9]
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf, id=46,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.22_150GHz.pdf used on input line 173.
+_0.22_150GHz.pdf used on input line 186.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf, id=37,
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf, id=47,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.55_150GHz.pdf used on input line 178.
+_0.55_150GHz.pdf used on input line 190.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf, id=38,
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_150GHz.pdf, id=48,
+ 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_150GHz.pdf Gr
+aphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_150GHz.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
+_0.75_150GHz.pdf used on input line 194.
+(pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf, id=49,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_1.00_150GHz.pdf used on input line 183.
+_1.00_150GHz.pdf used on input line 198.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 186--199
+[][] []
+ []
 
-LaTeX Warning: Float too large for page by 134.22386pt on input line 186.
+
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 186--199
+[] [] 
+ []
 
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf, id=39, 
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf, id=50, 
 578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf Gra
 phic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.22_95GHz.pdf used on input line 192.
+_0.22_95GHz.pdf used on input line 206.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf, id=40, 
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf, id=51, 
 578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf Gra
 phic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.55_95GHz.pdf used on input line 197.
+_0.55_95GHz.pdf used on input line 210.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_95GHz.pdf, id=41, 
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_95GHz.pdf, id=52, 
+578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_95GHz.pdf Gra
+phic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_95GHz.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
+_0.75_95GHz.pdf used on input line 214.
+(pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_95GHz.pdf, id=53, 
 578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_95GHz.pdf Gra
 phic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_95GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_1.00_95GHz.pdf used on input line 202.
+_1.00_95GHz.pdf used on input line 218.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 206--219
+[][] []
+ []
 
-LaTeX Warning: Float too large for page by 134.22386pt on input line 205.
+
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 206--219
+[] [] 
+ []
 
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf, id=42,
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf, id=54,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.22_220GHz.pdf used on input line 211.
+_0.22_220GHz.pdf used on input line 226.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf, id=43,
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf, id=55,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_0.55_220GHz.pdf used on input line 216.
+_0.55_220GHz.pdf used on input line 230.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
-<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_220GHz.pdf, id=44,
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_220GHz.pdf, id=56,
+ 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_220GHz.pdf Gr
+aphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_220GHz.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
+_0.75_220GHz.pdf used on input line 234.
+(pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_220GHz.pdf, id=57,
  578.16pt x 430.0065pt>
 File: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_220GHz.pdf Gr
 aphic file (type pdf)
 
 <use C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_220GHz.pdf>
 Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z
-_1.00_220GHz.pdf used on input line 221.
+_1.00_220GHz.pdf used on input line 238.
 (pdftex.def)             Requested size: 289.07928pt x 215.00272pt.
 
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 226--239
+[][] []
+ []
 
-LaTeX Warning: Float too large for page by 134.22386pt on input line 224.
 
+Overfull \hbox (7.83052pt too wide) in paragraph at lines 226--239
+[] [] 
+ []
 
-<C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf, id=45, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf used 
-on input line 234.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf, id=46, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf used 
-on input line 238.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf, id=47, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf used 
-on input line 242.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf, id=48, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf used 
-on input line 246.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf, id=49, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf used 
-on input line 250.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf, id=50, 578.16pt x 430.0065pt
->
-File: C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf Graphic file (type pdf)
- <use C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf used 
-on input line 254.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf, id=51, 578.16pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf Graphic file (type pdf)
-
-<use C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf used on
- input line 258.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf, id=52, 578.16pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf Graphic file (type pdf)
-
-<use C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf used on
- input line 262.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
-
-<C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf, id=53, 578.16pt x 430.0065pt>
-File: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf Graphic file (type pdf)
-
-<use C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf>
-Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf used on
- input line 266.
-(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
- [7] [8 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf
-> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf
+[10 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_150GHz.pdf> <C
+:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_150GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_0.55_150GHz.pdf): PDF inclusion: multiple pdfs with page group 
+included in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_150GHz.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
+ud_All_Masses_Z_0.75_150GHz.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
 > <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_150GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_1.00_150GHz.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
->] [9 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf> <
-C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf
+>] [11 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_95GHz.pdf> 
+<C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_95GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_0.55_95GHz.pdf): PDF inclusion: multiple pdfs with page group i
+ncluded in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_95GHz.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
+ud_All_Masses_Z_0.75_95GHz.pdf): PDF inclusion: multiple pdfs with page group i
 ncluded in a single page
 > <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_95GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_1.00_95GHz.pdf): PDF inclusion: multiple pdfs with page group i
 ncluded in a single page
->] [10 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf>
- <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf
+>]
+<C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf, id=561, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf used 
+on input line 251.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf, id=562, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_.22hm.pdf used 
+on input line 255.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf, id=563, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_.22hm.pdf used 
+on input line 259.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf, id=564, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_.55hm.pdf used 
+on input line 263.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf, id=565, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_.55hm.pdf used 
+on input line 267.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf, id=566, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_.55hm.pdf used 
+on input line 271.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf, id=567, 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf Graphic file (type pdf)
+<use C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/2.5_1hm.pdf used on
+ input line 275.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf, id=568, 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf Graphic file (type pdf)
+<use C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/3.5_1hm.pdf used on
+ input line 279.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf, id=569, 578.16pt x 430.0065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf Graphic file (type pdf)
+<use C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/4.5_1hm.pdf used on
+ input line 283.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+ [12 <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.22_220GHz.pdf> <
+C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.55_220GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_0.55_220GHz.pdf): PDF inclusion: multiple pdfs with page group 
+included in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_0.75_220GHz.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
+ud_All_Masses_Z_0.75_220GHz.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
 > <C:/Users/Gabrielle/Desktop/Figures/Arnaud_All_Masses_Z_1.00_220GHz.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Arna
 ud_All_Masses_Z_1.00_220GHz.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
->] [11 <C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf> <C:/Users/Gabrielle/D
+>] [13 <C:/Users/Gabrielle/Desktop/Figures/2.5_.22hm.pdf> <C:/Users/Gabrielle/D
 esktop/Figures/3.5_.22hm.pdf
 
 pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/3.5_
@@ -1762,6 +2048,459 @@ pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/4.5_
 1hm.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
 e
 >]
+<C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map.pdf, id=1202, 1951.29pt x 1150
+.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map.pdf Graphic file (type pd
+f)
+ <use C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map.pdf us
+ed on input line 293.
+(pdftex.def)             Requested size: 2146.42567pt x 1265.99362pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map1.pdf, id=1203, 1951.29pt x 115
+0.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map1.pdf Graphic file (type p
+df)
+ <use C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map1.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map1.pdf u
+sed on input line 297.
+(pdftex.def)             Requested size: 2146.42567pt x 1265.99362pt.
+
+Overfull \hbox (7.795pt too wide) in paragraph at lines 293--298
+[][] [] 
+ []
+
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout21.pdf, id=1204, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout21.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout21.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout21.pdf used o
+n input line 307.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout3.pdf, id=1205, 578.16pt x 430.0065pt
+>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout3.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout3.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout3.pdf used on
+ input line 311.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout6.pdf, id=1206, 578.16pt x 430.0065pt
+>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout6.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout6.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout6.pdf used on
+ input line 315.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout7.pdf, id=1207, 578.16pt x 430.0065pt
+>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout7.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout7.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout7.pdf used on
+ input line 319.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout9.pdf, id=1208, 578.16pt x 430.0065pt
+>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout9.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout9.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout9.pdf used on
+ input line 323.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout11.pdf, id=1209, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout11.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout11.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout11.pdf used o
+n input line 327.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout13.pdf, id=1210, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout13.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout13.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout13.pdf used o
+n input line 331.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout15.pdf, id=1211, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout15.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout15.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout15.pdf used o
+n input line 335.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Cutout17.pdf, id=1212, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Cutout17.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Cutout17.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Cutout17.pdf used o
+n input line 339.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+ [14 <C:/Users/Gabrielle/Desktop/Figures/Full_Sky_Map.pdf> <C:/Users/Gabrielle/
+Desktop/Figures/Full_Sky_Map1.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Full
+_Sky_Map1.pdf): PDF inclusion: multiple pdfs with page group included in a sing
+le page
+>]
+<C:/Users/Gabrielle/Desktop/Figures/Scatter21.pdf, id=1322, 578.16pt x 430.0065
+pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Scatter21.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Scatter21.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Scatter21.pdf used 
+on input line 351.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Scatter3.pdf, id=1323, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Scatter3.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Scatter3.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Scatter3.pdf used o
+n input line 355.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Scatter6.pdf, id=1324, 578.16pt x 430.0065p
+t>
+File: C:/Users/Gabrielle/Desktop/Figures/Scatter6.pdf Graphic file (type pdf)
+ <use C:/Users/Gabrielle/Desktop/Figures/Scatter6.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Scatter6.pdf used o
+n input line 359.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter1.pdf, id=1325, 578.16pt x 430.0
+065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter1.pdf Graphic file (type pd
+f)
+ <use C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter1.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter1.pdf us
+ed on input line 367.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter3.pdf, id=1326, 578.16pt x 430.0
+065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter3.pdf Graphic file (type pd
+f)
+ <use C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter3.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter3.pdf us
+ed on input line 371.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter6.pdf, id=1327, 578.16pt x 430.0
+065pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter6.pdf Graphic file (type pd
+f)
+ <use C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter6.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter6.pdf us
+ed on input line 375.
+(pdftex.def)             Requested size: 635.97797pt x 473.0086pt.
+ [15 <C:/Users/Gabrielle/Desktop/Figures/Cutout21.pdf> <C:/Users/Gabrielle/Desk
+top/Figures/Cutout3.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut3.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout6.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut6.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout7.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut7.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout9.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut9.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout11.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut11.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout13.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut13.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout15.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut15.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <C:/Users/Gabrielle/Desktop/Figures/Cutout17.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Cuto
+ut17.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+>] [16 <C:/Users/Gabrielle/Desktop/Figures/Scatter21.pdf> <C:/Users/Gabrielle/D
+esktop/Figures/Scatter3.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Scat
+ter3.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <C:/Users/Gabrielle/Desktop/Figures/Scatter6.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Scat
+ter6.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter1.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Bin_
+Scatter1.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+> <C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter3.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Bin_
+Scatter3.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+> <C:/Users/Gabrielle/Desktop/Figures/Bin_Scatter6.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Bin_
+Scatter6.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+>]
+<C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5Sim_1Clust.pdf, id=2188,
+ 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5Sim_1Clust.pdf Grap
+hic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5
+Sim_1Clust.pdf used on input line 391.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_25Sim_1Clust.pdf, id=2189
+, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_25Sim_1Clust.pdf Gra
+phic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_25Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_2
+5Sim_1Clust.pdf used on input line 395.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_50Sim_1Clust.pdf, id=2190
+, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_50Sim_1Clust.pdf Gra
+phic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_50Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5
+0Sim_1Clust.pdf used on input line 399.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_100Sim_1Clust.pdf, id=219
+1, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_100Sim_1Clust.pdf Gr
+aphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_100Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_1
+00Sim_1Clust.pdf used on input line 403.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 391--404
+[][] []
+ []
+
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 391--404
+[] [] 
+ []
+
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_5Sim_1Clust.pdf, id=2
+192, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_5Sim_1Clust.pdf 
+Graphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_5Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentErr
+or_5Sim_1Clust.pdf used on input line 411.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_25Sim_1Clust.pdf, id=
+2193, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_25Sim_1Clust.pdf
+ Graphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_25Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentErr
+or_25Sim_1Clust.pdf used on input line 415.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_50Sim_1Clust.pdf, id=
+2194, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_50Sim_1Clust.pdf
+ Graphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_50Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentErr
+or_50Sim_1Clust.pdf used on input line 419.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_100Sim_1Clust.pdf, id
+=2195, 1951.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_100Sim_1Clust.pd
+f Graphic file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_100Sim_1Clust.pdf
+>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentErr
+or_100Sim_1Clust.pdf used on input line 423.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 411--424
+[][] []
+ []
+
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 411--424
+[] [] 
+ []
+
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_Var_5Sim_1Clust.pdf, id=2196, 1951.29p
+t x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_5Sim_1Clust.pdf Graphic file 
+(type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_Var_5Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_5Sim_1Clus
+t.pdf used on input line 433.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_Var_25Sim_1Clust.pdf, id=2197, 1951.29
+pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_25Sim_1Clust.pdf Graphic file
+ (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_Var_25Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_25Sim_1Clu
+st.pdf used on input line 437.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_Var_50Sim_1Clust.pdf, id=2198, 1951.29
+pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_50Sim_1Clust.pdf Graphic file
+ (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_Var_50Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_50Sim_1Clu
+st.pdf used on input line 441.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/Mean_Var_100Sim_1Clust.pdf, id=2199, 1951.2
+9pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_100Sim_1Clust.pdf Graphic fil
+e (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/Mean_Var_100Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/Mean_Var_100Sim_1Cl
+ust.pdf used on input line 445.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 433--446
+[][] []
+ []
+
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 433--446
+[] [] 
+ []
+
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_5Sim_1Clust.pdf, id=2200, 1951
+.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_5Sim_1Clust.pdf Graphic f
+ile (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_5Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_5Sim_1
+Clust.pdf used on input line 453.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+<C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_25Sim_1Clust.pdf, id=2201, 195
+1.29pt x 1150.89972pt>
+File: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_25Sim_1Clust.pdf Graphic 
+file (type pdf)
+
+<use C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_25Sim_1Clust.pdf>
+Package pdftex.def Info: C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_25Sim_
+1Clust.pdf used on input line 457.
+(pdftex.def)             Requested size: 975.64262pt x 575.44846pt.
+
+Overfull \hbox (7.82832pt too wide) in paragraph at lines 453--466
+[][] [] 
+ []
+
+[17] [18 <C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_5Sim_1Clust.pdf>
+ <C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_25Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_PercentError_25Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group i
+ncluded in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_50Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_PercentError_50Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group i
+ncluded in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Mean_PercentError_100Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_PercentError_100Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group 
+included in a single page
+>] [19 <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_5Sim_1Clust.pd
+f> <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_25Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/AVG_
+Mean_PercentError_25Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page gro
+up included in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_50Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/AVG_
+Mean_PercentError_50Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page gro
+up included in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_PercentError_100Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/AVG_
+Mean_PercentError_100Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page gr
+oup included in a single page
+>] [20 <C:/Users/Gabrielle/Desktop/Figures/Mean_Var_5Sim_1Clust.pdf> <C:/Users/
+Gabrielle/Desktop/Figures/Mean_Var_25Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_Var_25Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group included i
+n a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Mean_Var_50Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_Var_50Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group included i
+n a single page
+> <C:/Users/Gabrielle/Desktop/Figures/Mean_Var_100Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/Mean
+_Var_100Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group included 
+in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_5Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/AVG_
+Mean_Var_5Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group include
+d in a single page
+> <C:/Users/Gabrielle/Desktop/Figures/AVG_Mean_Var_25Sim_1Clust.pdf
+
+pdfTeX warning: miktex-pdftex.exe (file C:/Users/Gabrielle/Desktop/Figures/AVG_
+Mean_Var_25Sim_1Clust.pdf): PDF inclusion: multiple pdfs with page group includ
+ed in a single page
+>]
 (C:\Users\Gabrielle\Desktop\Gabrielle-Cosm-Research_GitHubby\MSProjectDraft.aux
 )
 
@@ -1769,13 +2508,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 31042 strings out of 493921
- 730527 string characters out of 3147270
- 977281 words of memory out of 3000000
- 33808 multiletter control sequences out of 15000+200000
- 13953 words of font info for 58 fonts, out of 3000000 for 9000
+ 31221 strings out of 493921
+ 739943 string characters out of 3147270
+ 975281 words of memory out of 3000000
+ 33953 multiletter control sequences out of 15000+200000
+ 15302 words of font info for 64 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,12n,77p,10415b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,11n,77p,10415b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Gabrielle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dpi6
 00\bbmtt12.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex1
 0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C
@@ -1792,9 +2531,9 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsy8.pfb>
-Output written on MSProjectDraft.pdf (11 pages, 835193 bytes).
+Output written on MSProjectDraft.pdf (20 pages, 10042846 bytes).
 PDF statistics:
- 1067 PDF objects out of 1200 (max. 8388607)
+ 3201 PDF objects out of 3580 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 
